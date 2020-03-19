@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "252340556587",
+    "firebase_url": "https://coronavirus-bf9cb.firebaseio.com",
+    "project_id": "coronavirus-bf9cb",
+    "storage_bucket": "coronavirus-bf9cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252340556587:android:0fc5ad20f6fd1136ea2b6e",
+        "android_client_info": {
+          "package_name": "com.coronavirus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252340556587-e0htlenpfs3i6jl8bn4uq44ag7f0060b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbP6g3gCgGdTxm035_8mMpL4l8RZ2evTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252340556587-e0htlenpfs3i6jl8bn4uq44ag7f0060b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

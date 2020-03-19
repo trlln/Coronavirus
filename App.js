@@ -1,64 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
+import PushNotification from 'react-native-push-notification'
 
-import Expo, { Notifications } from 'expo'
+export default class App extends Component {
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Alert
-} from 'react-native';
+  async componentDidMount(){
+    PushNotification.configure({
+      // // (optional) Called when Token is generated (iOS and Android)
+      // onRegister: function(token) {
+      //   console.log("TOKEN:", token);
+      // },
+    
+      // (required) Called when a remote or local notification is opened or received
+      onNotification: function(notification) {
+        console.log("NOTIFICATION:", notification);
+    
+        // // process the notification
+    
+        // // required on iOS only (see fetchCompletionHandler docs: https://github.com/react-native-community/react-native-push-notification-ios)
+        // notification.finish(PushNotificationIOS.FetchResult.NoData);
+      },
+    
+      // // ANDROID ONLY: GCM or FCM Sender ID (product_number) (optional - not required for local notifications, but is need to receive remote push notifications)
+      // senderID: "YOUR GCM (OR FCM) SENDER ID",
+    
+      // // IOS ONLY (optional): default: all - Permissions to register.
+      // permissions: {
+      //   alert: true,
+      //   badge: true,
+      //   sound: true
+      // },
+    
+      // // Should the initial notification be popped automatically
+      // // default: true
+      // popInitialNotification: true,
+    
+      // /**
+      //  * (optional) default: true
+      //  * - Specified if permissions (ios) and token (android and ios) will requested or not,
+      //  * - if not, you must call PushNotificationsHandler.requestPermissions() later
+      //  */
+      // requestPermissions: true
+    });
+  }
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import registerForNotifications from './src/PushNotifications';
-
-const App = () => {
-
-  useEffect(() => {
-    registerForNotifications();
-
-    Notifications.addListener((notification) => {
-      const { data: { text }, origin } = notification;
-
-      if (origin === 'received' && text) {
-        Alert.alert('New Push Notification', text, [{ text: 'Ok.' }])
-      }
-    })
-    return () => {
-
-    }
-  }, [])
-
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-        >
-          <Text>Hi</Text>
-
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-
-export default App;
+  render() {
+    return (
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <Text> Recieved Push Notification </Text>
+      </View>
+    )
+  }
+}
