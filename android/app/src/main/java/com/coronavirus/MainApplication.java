@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+import org.reactnative.maskedview.RNCMaskedViewPackage;
 import com.srfaytkn.reactnative.YouTubeSdkPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.facebook.react.ReactNativeHost;
@@ -14,9 +16,11 @@ import java.util.List;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage; // <-- Add this line
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; // <-- Add this line
 
+import androidx.multidex.MultiDexApplication;
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends MultiDexApplication implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {
@@ -33,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           packages.add(new RNFirebaseMessagingPackage()); // <-- Add this line
           packages.add(new RNFirebaseNotificationsPackage()); // <-- Add this line
+          packages.add(new SafeAreaContextPackage());
 
           return packages;
         }
