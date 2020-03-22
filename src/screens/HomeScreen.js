@@ -3,6 +3,7 @@ import PushNotification from 'react-native-push-notification'
 import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
 
 import { styles } from '../config/styles'
+import axios from 'axios';
 
 class HomeScreen extends React.Component {
 
@@ -155,8 +156,27 @@ class HomeScreen extends React.Component {
         //   repeatType: 'time',
         //   repeatTime: 10 * 10000
         // })
-        PushNotification.cancelAllLocalNotifications();
-        Alert.alert(JSON.stringify(await AsyncStorage.getItem('firstLogin')))
+
+        // PushNotification.cancelAllLocalNotifications();
+
+        // Network call to configure
+        const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+        axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+                "userInfo": {
+                    "uid": uid,
+                    "personalize": {
+                      start: this.state.startTime,
+                      end: this.state.endTime,
+                      interval: this.state.frequency
+                    }
+                }
+            }).then(() => {
+                console.log("success")
+            }
+            ).catch(
+                console.log('fail')
+            );
+
       }} title="Push"/>
 
       <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>

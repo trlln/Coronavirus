@@ -12,25 +12,31 @@ import Hygiene from './src/screens/Hygiene';
 import TabNavigator from './src/navigators/TabNavigator';
 import { firstLogin } from './src/service/firstLogin';
 import StackNavigator from './src/navigators/StackNavigator';
+import LogIn from './src/screens/LogIn';
 
 
 const App = () => {
 
-  let isLogin = false;
+  let [isLogin, setIsLogin] = useState(false)
 
-  useEffect(() => {
-    isLogin = firstLogin();
-  } )
+  // useEffect(() => {
+  //   login = () => setIsLogin(firstLogin())
+  // } )
 
-  return isLogin ? (
-    <TermsAndConditions />
-    ) :
-    // (
-    //   <TabNavigator />
-    // )
+//   return firstLogin() ? 
+//   // (
+//   //   <TermsAndConditions />
+//   //   ) :
+//     (
+//       <TabNavigator />
+//     )
+// :
+//    (
+//     <StackNavigator />
+//   )
 
-   (
-    <StackNavigator />
+  return (
+    <LogIn />
   )
 }
 

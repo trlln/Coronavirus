@@ -38,6 +38,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 barStyle: { backgroundColor: 'gold' },
             }
         },
+
         Cart: {
             screen: CartScreen,
             navigationOptions: {
@@ -50,10 +51,12 @@ const TabNavigator = createMaterialBottomTabNavigator(
         },
     },
     {
+        animationEnabled: true,
         initialRouteName: "Home",
         activeColor: 'green',
         inactiveColor: 'brown',
         barStyle: { backgroundColor: 'orange' },
+        shifting: true
     },
 );
 
