@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     },
     mainheading: {
       textAlign: 'left',
-      fontSize: 30,
+      fontSize: 35,
       backgroundColor: 'orange',
       color: 'brown',
       fontWeight: 'bold',
