@@ -72,6 +72,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container1}>
       <Text style = {styles.mainheading}> Karona Saaf </Text>
+      <ScrollView style = {styles.margins}>
       <Text style = {styles.textStyle1}>Personalize your notifications: </Text>
 
       <Text style = {styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
@@ -166,6 +167,7 @@ class HomeScreen extends React.Component {
       <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(1075)}}>
           <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> Toll Free Helpline </Text>
       </TouchableOpacity>
+      </ScrollView>
       <Text style = {styles.footerstyle}>Brought To You By
         <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
       </Text>

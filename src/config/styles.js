@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -30,10 +29,11 @@ export const styles = StyleSheet.create({
     },
     mainheading: {
       textAlign: 'left',
-      fontSize: 50,
+      fontSize: 30,
       backgroundColor: 'orange',
       color: 'brown',
       fontWeight: 'bold',
+      height: '10%'
     },
       textStyle1:{
         margin: 5,
@@ -47,6 +47,9 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         justifyContent: 'center',
         textAlign: 'center',
+      },
+      margins: {
+        marginBottom: "20%",
       },
       textStyle3:{
         marginBottom: 5,
@@ -82,12 +85,9 @@ export const styles = StyleSheet.create({
         backgroundColor: 'orange',
         marginLeft: "25%"
       },
-      videos:{
-        marginBottom: 50,
-      },
       footerstyle:{
         width: '100%',
-        height: 70,
+        height: '12%',
         backgroundColor: 'green',
         position: 'absolute',
         textAlign: 'center',

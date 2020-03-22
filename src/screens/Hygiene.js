@@ -12,8 +12,8 @@ class Hygiene extends React.Component {
     render() {
       return (
         <View style={styles.container1}>
-        <Text style = {styles.mainheading}> Hygiene Practice </Text>
-        <ScrollView style={styles.videos}>
+        <Text style = {styles.mainheading}> Hygiene Practices </Text>
+        <ScrollView style={styles.margins}>
             <Text style = {styles.textStyle1}>{'\n'}Check out some of the videos recommended  by various government organizations here: </Text>
             <Text>{"\n"} </Text>
             <Text style = {styles.textStyle3}>1. Find out the correct way to wash your hands. {"\n"}</Text>
