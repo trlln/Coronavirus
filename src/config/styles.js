@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
       },
       textStyle3:{
-        margin: 5,
+        marginBottom: 5,
         fontSize: 16,
         justifyContent: 'center',
         textAlign: 'center',
