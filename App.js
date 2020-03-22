@@ -16,20 +16,30 @@ import StackNavigator from './src/navigators/StackNavigator';
 
 const App = () => {
 
-  let isLogin = false;
+  let firstLogin = false;
 
-  useEffect(() => {
-    isLogin = firstLogin();
+  useEffect(async () => {
+    openApp();
   } )
 
-  return isLogin ? (
+  const openApp = async () => {
+    firstLogin = await AsyncStorage.getItem('firstLogin');
+    await Alert.alert(JSON.stringify(isLogin))
+    if(firstLogin === 'Done') {
+      firstLogin = false;
+    }
+  }
+
+  return firstLogin ? (
     <TermsAndConditions />
     ) : ( 
       <TabNavigator />
     )
 
-  // return (
+  // return firstLogin ? (
   //   <StackNavigator />
+  // ) : (
+  //   <TabNavigator />
   // )
 }
 

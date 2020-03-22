@@ -54,6 +54,8 @@ class HomeScreen extends React.Component {
       requestPermissions: true
     });
 
+    
+
   }
 
   editUser = () => {
