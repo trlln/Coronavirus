@@ -1,0 +1,1 @@
+export { notificationData } from './notificationData';

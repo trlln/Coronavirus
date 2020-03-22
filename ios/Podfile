@@ -34,9 +34,10 @@ target 'Coronavirus' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
   pod 'YouTubeSdk', :path => '../node_modules/react-native-youtube-sdk'
+
 
   target 'CoronavirusTests' do
     inherit! :search_paths

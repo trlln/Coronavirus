@@ -15,6 +15,9 @@ class HomeScreen extends React.Component {
     };
 
   async componentDidMount(){
+
+
+    // Configuring Push notifications
     PushNotification.configure({
       // // (optional) Called when Token is generated (iOS and Android)
       // onRegister: function(token) {
@@ -31,8 +34,8 @@ class HomeScreen extends React.Component {
         // notification.finish(PushNotificationIOS.FetchResult.NoData);
       },
 
-      // // ANDROID ONLY: GCM or FCM Sender ID (product_number) (optional - not required for local notifications, but is need to receive remote push notifications)
-      // senderID: "YOUR GCM (OR FCM) SENDER ID",
+      // ANDROID ONLY: GCM or FCM Sender ID (product_number) (optional - not required for local notifications, but is need to receive remote push notifications)
+      senderID: "252340556587",
 
       // // IOS ONLY (optional): default: all - Permissions to register.
       // permissions: {
@@ -50,14 +53,15 @@ class HomeScreen extends React.Component {
       //  * - Specified if permissions (ios) and token (android and ios) will requested or not,
       //  * - if not, you must call PushNotificationsHandler.requestPermissions() later
       //  */
-      // requestPermissions: true
+      requestPermissions: true
     });
+
   }
 
   editUser = () => {
     this.props.navigation.navigate("Image");
     console.log(this.state.frequency, this.state.startTime, this.state.endTime);
-        };
+  };
 
   render() {
     return (
@@ -75,6 +79,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="Every 3 hours" value="3" />
       </Picker>
       <Text style = {styles.textStyle1}>2.Choose the starting time from when you want to start receiving notifications:</Text>
+      
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.startTime}
               onValueChange={(itemValue, itemPosition) =>
@@ -135,6 +140,15 @@ class HomeScreen extends React.Component {
           <Picker.Item label="11:00 PM" value="23" />
       </Picker>
       <Button color='#6495ed' onPress={this.editUser} title="Save"/>
+      <Button color='#6495ed' onPress={() => {
+        PushNotification.localNotificationSchedule({
+          title: "Title 1",
+          message: "This message is solely for testing purposes",
+          date: new Date(Date.now() + 1 * 1000), // in 60 secs
+          repeatType: 'time',
+          repeatTime: 10 * 10000
+        })
+      }} title="Push"/>
       <Text style = {styles.footerstyle}>Brought To You By {'\n'}Team MyChowkidar</Text>
       </View>
     );
