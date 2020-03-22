@@ -3,38 +3,39 @@ import PushNotification from 'react-native-push-notification'
 import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
 
 import { styles } from '../config/styles'
+import { preventiveNotification } from '../config/notificationData'
 import axios from 'axios';
 
 class HomeScreen extends React.Component {
 
   state = {
-    frequency: 15,
-    startTime: 5,
-    endTime: 9
-    };
+    frequency: 0.5,
+    startTime: 0,
+    endTime: 0
+  };
 
   dialCall = (number) => {
-       let phoneNumber = '';
-       if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
-       else {phoneNumber = `telprompt:${number}`; }
-       Linking.openURL(phoneNumber);
-    };
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
+    else { phoneNumber = `telprompt:${number}`; }
+    Linking.openURL(phoneNumber);
+  };
 
-  async componentDidMount(){
+  async componentDidMount() {
 
 
     // Configuring Push notifications
     PushNotification.configure({
-      // // (optional) Called when Token is generated (iOS and Android)
-      // onRegister: function(token) {
-      //   console.log("TOKEN:", token);
-      // },
+      // (optional) Called when Token is generated (iOS and Android)
+      onRegister: function (token) {
+        console.log("TOKEN:", token);
+      },
 
       // (required) Called when a remote or local notification is opened or received
-      onNotification: function(notification) {
+      onNotification: function (notification) {
         console.log("NOTIFICATION:", notification);
 
-        // // process the notification
+        // process the notification
 
         // // required on iOS only (see fetchCompletionHandler docs: https://github.com/react-native-community/react-native-push-notification-ios)
         // notification.finish(PushNotificationIOS.FetchResult.NoData);
@@ -50,8 +51,8 @@ class HomeScreen extends React.Component {
       //   sound: true
       // },
 
-      // // Should the initial notification be popped automatically
-      // // default: true
+      // Should the initial notification be popped automatically
+      // default: true
       // popInitialNotification: true,
 
       // /**
@@ -69,28 +70,28 @@ class HomeScreen extends React.Component {
     console.log(this.state.frequency, this.state.startTime, this.state.endTime);
   };
 
-  render () {
+  render() {
     return (
       <View style={styles.container1}>
-      <Text style = {styles.mainheading}> Karona Saaf </Text>
-      <Text style = {styles.textStyle1}>Personalize your notifications: </Text>
+        <Text style={styles.mainheading}> Karona Saaf </Text>
+        <Text style={styles.textStyle1}>Personalize your notifications: </Text>
 
-      <Text style = {styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
-      <Picker style={styles.pickerStyle}
-              selectedValue={this.state.frequency}
-              onValueChange={(itemValue, itemPosition) =>
-                  this.setState({frequency: itemValue})} mode = 'dropdown'>
+        <Text style={styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
+        <Picker style={styles.pickerStyle}
+          selectedValue={this.state.frequency}
+          onValueChange={(itemValue, itemPosition) =>
+            this.setState({ frequency: itemValue })} mode='dropdown'>
           <Picker.Item label="Every 30 minutes" value="0.5" />
           <Picker.Item label="Every hour" value="1" />
           <Picker.Item label="Every 2 hours" value="2" />
           <Picker.Item label="Every 3 hours" value="3" />
-      </Picker>
-      <Text style = {styles.textStyle1}>2.Choose the starting time from when you want to start receiving notifications:</Text>
+        </Picker>
+        <Text style={styles.textStyle1}>2.Choose the starting time from when you want to start receiving notifications:</Text>
 
-      <Picker style={styles.pickerStyle}
-              selectedValue={this.state.startTime}
-              onValueChange={(itemValue, itemPosition) =>
-                  this.setState({startTime: itemValue})} mode = 'dropdown'>
+        <Picker style={styles.pickerStyle}
+          selectedValue={this.state.startTime}
+          onValueChange={(itemValue, itemPosition) =>
+            this.setState({ startTime: itemValue })} mode='dropdown'>
           <Picker.Item label="00:00 AM" value="0" />
           <Picker.Item label="1:00 AM" value="1" />
           <Picker.Item label="2:00 AM" value="2" />
@@ -115,12 +116,12 @@ class HomeScreen extends React.Component {
           <Picker.Item label="9:00 PM" value="21" />
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
-      </Picker>
-      <Text style = {styles.textStyle1}>3.Choose the ending time after which we will stop sending notifications to you for the day:</Text>
-      <Picker style={styles.pickerStyle}
-              selectedValue={this.state.endTime}
-              onValueChange={(itemValue, itemPosition) =>
-                  this.setState({endTime: itemValue})} mode = 'dropdown'>
+        </Picker>
+        <Text style={styles.textStyle1}>3.Choose the ending time after which we will stop sending notifications to you for the day:</Text>
+        <Picker style={styles.pickerStyle}
+          selectedValue={this.state.endTime}
+          onValueChange={(itemValue, itemPosition) =>
+            this.setState({ endTime: itemValue })} mode='dropdown'>
           <Picker.Item label="00:00 AM" value="0" />
           <Picker.Item label="1:00 AM" value="1" />
           <Picker.Item label="2:00 AM" value="2" />
@@ -145,50 +146,60 @@ class HomeScreen extends React.Component {
           <Picker.Item label="9:00 PM" value="21" />
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
-      </Picker>
-      <Text style = {styles.textStyle2}> Save your settings by pressing the following button: </Text>
+        </Picker>
+        <Text style={styles.textStyle2}> Save your settings by pressing the following button: </Text>
 
-      <Button color='green' onPress={async () => {
-        // PushNotification.localNotificationSchedule({
-        //   title: "Title 1",
-        //   message: "This message is solely for testing purposes",
-        //   date: new Date(Date.now() + 1 * 1000), // in 60 secs
-        //   repeatType: 'time',
-        //   repeatTime: 10 * 10000
-        // })
+        <Button color='green' onPress={async () => {
 
-        // PushNotification.cancelAllLocalNotifications();
+          console.log(this.state.startTime)
+          console.log(this.state.endTime)
+          console.log(this.state.frequency)
 
-        // Network call to configure
-        const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-        axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
-                "userInfo": {
-                    "uid": uid,
-                    "personalize": {
-                      start: this.state.startTime,
-                      end: this.state.endTime,
-                      interval: this.state.frequency
-                    }
-                }
-            }).then(() => {
-                console.log("success")
-            }
-            ).catch(
-                console.log('fail')
-            );
+          // // Selecting random notification
+          let a = Math.floor(Math.random()*8);
+          var notification = preventiveNotification[a]
 
-      }} title="Push"/>
+          // // Scheduling notification
+          PushNotification.localNotificationSchedule({
+            title: notification.title,
+            message: notification.body,
+            repeatType: 'minute',
+            repeatTime: this.state.frequency * 60,
+            date: new Date(Date.now()),
+          })
 
-      <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
-      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(+911123978046)}}>
-          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> COVID-19 Helpline </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(1075)}}>
-          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> Toll Free Helpline </Text>
-      </TouchableOpacity>
-      <Text style = {styles.footerstyle}>Brought To You By
-        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
-      </Text>
+          // PushNotification.cancelAllLocalNotifications();
+
+          // Network call to configure
+          const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+          axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+                  "userInfo": {
+                      "uid": uid,
+                      "personalize": {
+                        start: this.state.startTime,
+                        end: this.state.endTime,
+                        interval: this.state.frequency
+                      }
+                  }
+              }).then(() => {
+                  console.log("success")
+              }
+              ).catch(
+                  console.log('fail')
+              );
+
+        }} title="Push" />
+
+        <Text style={styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
+        <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(+911123978046) }}>
+          <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> COVID-19 Helpline </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(1075) }}>
+          <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Toll Free Helpline </Text>
+        </TouchableOpacity>
+        <Text style={styles.footerstyle}>Brought To You By
+        <Text style={{ textDecorationLine: 'underline', color: 'orange', fontSize: 25 }} onPress={() => Linking.openURL('https://www.mychowkidar.co.in/')}>{'\n'}Team MyChowkidar </Text>
+        </Text>
       </View>
     );
   }

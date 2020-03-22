@@ -5,6 +5,4 @@ export const setUserConfig = async (start, end, interval) => {
         "end": end,
         "interval": interval
     }
-
-    
 }

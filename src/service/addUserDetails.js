@@ -5,7 +5,7 @@ import GetLocation from 'react-native-get-location'
 export const addUserDetails = async () => {
 
     const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-    // await getLocation(uid); // uncomment it
+    await getLocation(uid); // uncomment it
 
 }
 

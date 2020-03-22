@@ -52,9 +52,9 @@ class TermsAndConditions extends Component {
 
           // uncomment it
           AsyncStorage.setItem('firstLogin', 'Done');
-          // let uid = await createUser();
-          // console.log(uid);
-          // await AsyncStorage.setItem('uid', JSON.stringify(uid));
+          let uid = await createUser();
+          console.log(uid);
+          await AsyncStorage.setItem('uid', JSON.stringify(uid));
 
           this.props.navigation.replace("Tutorial");
 
