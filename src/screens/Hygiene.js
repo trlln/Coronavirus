@@ -12,62 +12,55 @@ class Hygiene extends React.Component {
     render() {
       return (
         <View style={styles.container1}>
-        <Text style = {styles.heading}>Hygiene Practices</Text>
-        <ScrollView>
-  
+        <Text style = {styles.mainheading}> Hygiene Practice </Text>
+        <ScrollView style={styles.videos}>
+
             <YouTubePlayer
               ref={ref => (this.youTubePlayer = ref)}
               videoId="seA1wbXUQTs"
-              autoPlay={true}
-              fullscreen={false}
+              autoPlay={false}
+              fullscreen={true}
               showFullScreenButton={true}
               showSeekBar={true}
               showPlayPauseButton={true}
               startTime={0}
               style={{ width: "100%", height: 200 }}
+              onError={e => console.log(e)}
+              onChangeState={e => console.log(e)}
             />
-            <Text style = {styles.textStyle}>Correct Way to wash your Hands {"\n"}</Text>
-  
+            <Text style = {styles.textStyle3}>1. Correct Way to wash your Hands {"\n"}</Text>
+
             <YouTubePlayer
               ref={ref => (this.youTubePlayer = ref)}
               videoId="-NHDnpTmUjo"
               autoPlay={false}
-              fullscreen={false}
+              fullscreen={true}
               showFullScreenButton={true}
               showSeekBar={true}
               showPlayPauseButton={true}
               startTime={0}
               style={{ width: "100%", height: 200 }}
             />
-              <Text style = {styles.textStyle}> Social Distancing Practices{"\n"} </Text>
-  
+              <Text style = {styles.textStyle3}>2. Social Distancing Practices{"\n"} </Text>
+
             <YouTubePlayer
               ref={ref => (this.youTubePlayer = ref)}
               videoId="Y9VgmhxtJFk"
               autoPlay={false}
-              fullscreen={false}
+              fullscreen={true}
               showFullScreenButton={true}
               showSeekBar={true}
               showPlayPauseButton={true}
               startTime={0}
               style={{ width: "100%", height: 200 }}
             />
-              <Text style = {styles.textStyle}> Some Precautions to Protect Yourself{"\n"} </Text>
-  
-              <YouTubePlayer
-                ref={ref => (this.youTubePlayer = ref)}
-                videoId="AQxpQ94Euic"
-                autoPlay={false}
-                fullscreen={false}
-                showFullScreenButton={true}
-                showSeekBar={true}
-                showPlayPauseButton={true}
-                startTime={0}
-                style={{ width: "100%", height: 200 }}
-              />
-                <Text style = {styles.textStyle}> Self Care Ideas for Quarantine {"\n"} </Text>
-                <Text style = {styles.footerstyle}>Brought To You By {'\n'}Team MyChowkidar</Text>
+              <Text style = {styles.textStyle3}>3. Some Precautions to Protect Yourself{"\n"} </Text>
+
+
         </ScrollView>
+        <Text style = {styles.footerstyle}>Brought To You By
+          <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+        </Text>
         </View>
       );
     }

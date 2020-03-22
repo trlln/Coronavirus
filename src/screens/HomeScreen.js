@@ -1,6 +1,6 @@
 import React from 'react'
 import PushNotification from 'react-native-push-notification'
-import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage } from 'react-native';
+import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
 
 import { styles } from '../config/styles'
 
@@ -10,6 +10,13 @@ class HomeScreen extends React.Component {
     frequency: 15,
     startTime: 5,
     endTime: 9
+    };
+
+  dialCall = (number) => {
+       let phoneNumber = '';
+       if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
+       else {phoneNumber = `telprompt:${number}`; }
+       Linking.openURL(phoneNumber);
     };
 
   async componentDidMount(){
@@ -66,23 +73,23 @@ class HomeScreen extends React.Component {
       <View style={styles.container1}>
       <Text style = {styles.mainheading}> Karona Saaf </Text>
       <Text style = {styles.textStyle1}>Personalize your notifications: </Text>
-     
+
       <Text style = {styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.frequency}
               onValueChange={(itemValue, itemPosition) =>
-                  this.setState({frequency: itemValue})}>
+                  this.setState({frequency: itemValue})} mode = 'dropdown'>
           <Picker.Item label="Every 30 minutes" value="0.5" />
           <Picker.Item label="Every hour" value="1" />
           <Picker.Item label="Every 2 hours" value="2" />
           <Picker.Item label="Every 3 hours" value="3" />
       </Picker>
       <Text style = {styles.textStyle1}>2.Choose the starting time from when you want to start receiving notifications:</Text>
-      
+
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.startTime}
               onValueChange={(itemValue, itemPosition) =>
-                  this.setState({startTime: itemValue})}>
+                  this.setState({startTime: itemValue})} mode = 'dropdown'>
           <Picker.Item label="00:00 AM" value="0" />
           <Picker.Item label="1:00 AM" value="1" />
           <Picker.Item label="2:00 AM" value="2" />
@@ -112,7 +119,7 @@ class HomeScreen extends React.Component {
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.endTime}
               onValueChange={(itemValue, itemPosition) =>
-                  this.setState({endTime: itemValue})}>
+                  this.setState({endTime: itemValue})} mode = 'dropdown'>
           <Picker.Item label="00:00 AM" value="0" />
           <Picker.Item label="1:00 AM" value="1" />
           <Picker.Item label="2:00 AM" value="2" />
@@ -138,8 +145,9 @@ class HomeScreen extends React.Component {
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
       </Picker>
-      <Button color='#6495ed' onPress={this.editUser} title="Save"/>
-      <Button color='#6495ed' onPress={async () => {
+      <Text style = {styles.textStyle2}> Save your settings by pressing the following button: </Text>
+
+      <Button color='green' onPress={async () => {
         // PushNotification.localNotificationSchedule({
         //   title: "Title 1",
         //   message: "This message is solely for testing purposes",
@@ -150,7 +158,17 @@ class HomeScreen extends React.Component {
         PushNotification.cancelAllLocalNotifications();
         Alert.alert(JSON.stringify(await AsyncStorage.getItem('firstLogin')))
       }} title="Push"/>
-      <Text style = {styles.footerstyle}>Brought To You By {'\n'}Team MyChowkidar</Text>
+
+      <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
+      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(+911123978046)}}>
+          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> COVID-19 Helpline </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(1075)}}>
+          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> Toll Free Helpline </Text>
+      </TouchableOpacity>
+      <Text style = {styles.footerstyle}>Brought To You By
+        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+      </Text>
       </View>
     );
   }

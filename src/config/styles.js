@@ -9,6 +9,11 @@ export const styles = StyleSheet.create({
     container1: {
       flex: 1,
     },
+    container2: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     textStyle: {
       textAlign: 'center',
       fontSize: 20,
@@ -32,20 +37,58 @@ export const styles = StyleSheet.create({
     },
       textStyle1:{
         margin: 5,
-        fontSize: 15,
+        fontSize: 18,
+        justifyContent: 'center',
+        textAlign: 'center',
         fontWeight: 'bold',
-        textAlign: 'left',
+      },
+      textStyle2:{
+        margin: 5,
+        fontSize: 16,
+        justifyContent: 'center',
+        textAlign: 'center',
+      },
+      textStyle3:{
+        margin: 5,
+        fontSize: 16,
+        justifyContent: 'center',
+        textAlign: 'center',
+        backgroundColor: 'orange',
+        color: 'brown',
+        fontWeight: 'bold',
+      },
+      button: {
+        alignItems: 'center',
+        backgroundColor: "orange",
+        padding: 10,
+        color: 'brown',
+        width: '50%',
+        marginLeft: '25%',
+        marginTop: 10,
+        borderRadius: 50
+      },
+      hyperlinks:{
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize: 18,
+        textDecorationLine: 'underline',
+        marginTop: 5
       },
       pickerStyle:{
         height: 40,
         width: "50%",
-        color: 'black',
+        color: 'brown',
         justifyContent: 'center',
+        backgroundColor: 'orange',
+        marginLeft: "25%"
+      },
+      videos:{
+        marginBottom: 50,
       },
       footerstyle:{
         width: '100%',
-        height: 50,
-        backgroundColor: '#6495ed',
+        height: 70,
+        backgroundColor: 'green',
         position: 'absolute',
         textAlign: 'center',
         bottom: 0,

@@ -24,13 +24,14 @@ const App = () => {
 
   return isLogin ? (
     <TermsAndConditions />
-    ) : ( 
-      <TabNavigator />
-    )
+    ) :
+    // (
+    //   <TabNavigator />
+    // )
 
-  // return (
-  //   <StackNavigator />
-  // )
+   (
+    <StackNavigator />
+  )
 }
 
 export default App;

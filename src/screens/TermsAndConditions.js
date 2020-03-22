@@ -38,24 +38,24 @@ class TermsAndConditions extends Component{
                 <Text style={styles.tcP}>Welcome to our app. If you continue to browse and use this app, you are agreeing to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern Karona Saaf’s relationship with you in relation to this app. If you disagree with any part of these terms and conditions, please do not use our app.</Text>
                 <Text style={styles.tcP}>The term ‘Karona Saaf’ or ‘us’ or ‘we’ refers to the owner of the app. The term ‘you’ refers to the user or viewer of our app.</Text>
                     <Text style={styles.tcL}>{'\u2022'} The content of the pages of this app is for your general information and use only. It is subject to change without notice.</Text>
-                    <Text style={styles.tcL}>{'\u2022'} This app uses your location to send you notifications. If you allow access to your location, the following personal information may be stored by us for use by third parties: location.</Text>
+                    <Text style={styles.tcL}>{'\u2022'} This app uses your location to send you notifications, localized as applicable. If you allow access to your location, only your location determined by the GPS may be stored by us for use by third parties.</Text>
                     <Text style={styles.tcL}>{'\u2022'} Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this app for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</Text>
                     <Text style={styles.tcL}>{'\u2022'} Your use of any information or materials on this app is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this app meet your specific requirements.</Text>
-                    <Text style={styles.tcL}>{'\u2022'} This app contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</Text>
+                    <Text style={styles.tcL}>{'\u2022'} This app contains material which is owned by or licensed to us or information that is in public domain. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</Text>
                     <Text style={styles.tcL}>{'\u2022'} From time to time, this app may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).</Text>
                     <Text style={styles.tcL}>{'\u2022'} Your use of this app and any dispute arising out of such use of the app is subject to the laws of India.</Text>
-                <Text style={styles.tcP}>Click on the button if you agree to the above terms of use</Text>
+                <Text style={styles.tcP}>Click on the button if you agree to the above terms of use:</Text>
             </ScrollView>
 
             <TouchableOpacity disabled={ !this.state.accepted } onPress={ ()=>
                 {
-                    
-                    AsyncStorage.setItem('firstLogin', 'Done'); 
-                    
+
+                    AsyncStorage.setItem('firstLogin', 'Done');
+
                     this.props.navigation.navigate("TabNavigator");
 
 
-                
+
                 }} style={ this.state.accepted ? styles.button : styles.buttonDisabled }><Text style={styles.buttonLabel}>Accept</Text></TouchableOpacity>
       </View>
     );

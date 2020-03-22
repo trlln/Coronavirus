@@ -31,9 +31,9 @@ const TabNavigator = createMaterialBottomTabNavigator(
                     <View>
                         <Icon style={[{color: tintColor}]} size={25} name={'ios-water'}/>
                     </View>),
-                activeColor: '#615af6',
-                inactiveColor: '#46f6d7',
-                barStyle: { backgroundColor: '#67baf6' },
+                activeColor: 'green',
+                inactiveColor: 'brown',
+                barStyle: { backgroundColor: 'gold' },
             }
         },
         Cart: {
@@ -49,8 +49,8 @@ const TabNavigator = createMaterialBottomTabNavigator(
     },
     {
       initialRouteName: "Home",
-      activeColor: '#f0edf6',
-      inactiveColor: '#226557',
+      activeColor: 'green',
+      inactiveColor: 'brown',
       barStyle: { backgroundColor: 'orange' },
     },
 );
