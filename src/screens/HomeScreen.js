@@ -73,14 +73,15 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container1}>
-        <Text style={styles.mainheading}> Karona Saaf </Text>
-        <Text style={styles.textStyle1}>Personalize your notifications: </Text>
+      <Text style = {styles.mainheading}> Karona Saaf </Text>
+      <ScrollView style = {styles.margins}>
+      <Text style = {styles.textStyle1}>Personalize your notifications: </Text>
 
-        <Text style={styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
-        <Picker style={styles.pickerStyle}
-          selectedValue={this.state.frequency}
-          onValueChange={(itemValue, itemPosition) =>
-            this.setState({ frequency: itemValue })} mode='dropdown'>
+      <Text style = {styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
+      <Picker style={styles.pickerStyle}
+              selectedValue={this.state.frequency}
+              onValueChange={(itemValue, itemPosition) =>
+                  this.setState({frequency: itemValue})} mode = 'dropdown'>
           <Picker.Item label="Every 30 minutes" value="0.5" />
           <Picker.Item label="Every hour" value="1" />
           <Picker.Item label="Every 2 hours" value="2" />
@@ -155,51 +156,67 @@ class HomeScreen extends React.Component {
           console.log(this.state.endTime)
           console.log(this.state.frequency)
 
+          // AsyncStorage.removeItem('firstLogin')
+
           // // Selecting random notification
           let a = Math.floor(Math.random()*8);
           var notification = preventiveNotification[a]
 
-          // // Scheduling notification
+          // Alert.alert(JSON.stringify(notification.title))
+
+          // Immediate notification
+          // PushNotification.localNotification({
+          //   title: notification.title,
+          //   message: notification.body,
+          // })
+          PushNotification.cancelAllLocalNotifications();
+
+          // Scheduling notification
           PushNotification.localNotificationSchedule({
             title: notification.title,
             message: notification.body,
-            repeatType: 'minute',
-            repeatTime: this.state.frequency * 60,
+            repeatType: 'time',
+            repeatTime: 60 * 1000 * 60 * this.state.frequency,
             date: new Date(Date.now()),
           })
 
-          // PushNotification.cancelAllLocalNotifications();
 
-          // Network call to configure
-          const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-          axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
-                  "userInfo": {
-                      "uid": uid,
-                      "personalize": {
-                        start: this.state.startTime,
-                        end: this.state.endTime,
-                        interval: this.state.frequency
-                      }
-                  }
-              }).then(() => {
-                  console.log("success")
-              }
-              ).catch(
-                  console.log('fail')
-              );
+          // // Network call to configure
+          // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+          // axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+          //         "userInfo": {
+          //             "uid": uid,
+          //             "personalize": {
+          //               start: this.state.startTime,
+          //               end: this.state.endTime,
+          //               interval: this.state.frequency
+          //             }
+          //         }
+          //     }).then(() => {
+          //         console.log("success")
+          //     }
+          //     ).catch(() => {
+          //       console.log('fail')
+          //     }
+          //     );
+
+              Alert.alert("Schedule updated!")
 
         }} title="Push" />
 
-        <Text style={styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
-        <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(+911123978046) }}>
-          <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> COVID-19 Helpline </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(1075) }}>
-          <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Toll Free Helpline </Text>
-        </TouchableOpacity>
-        <Text style={styles.footerstyle}>Brought To You By
-        <Text style={{ textDecorationLine: 'underline', color: 'orange', fontSize: 25 }} onPress={() => Linking.openURL('https://www.mychowkidar.co.in/')}>{'\n'}Team MyChowkidar </Text>
-        </Text>
+        
+       
+      <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
+      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(+911123978046)}}>
+          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> COVID-19 Helpline </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(1075)}}>
+          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> Toll Free Helpline </Text>
+      </TouchableOpacity>
+      </ScrollView>
+      <Text style = {styles.footerstyle}>Brought To You By
+        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+      </Text>
       </View>
     );
   }

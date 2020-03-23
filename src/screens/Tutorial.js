@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, AsyncStorage } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import TabNavigator from '../navigators/TabNavigator';
 import { addUserDetails } from '../service/addUserDetails';
+import { createUser } from '../service/createUser';
 
 const slides = [
   {
@@ -66,7 +67,9 @@ class Tutorial extends React.Component {
     this.sendUserDetails();
   }
 
-  sendUserDetails = () => {
+  sendUserDetails = async () => {
+    let uid = await createUser();
+    await AsyncStorage.setItem('uid', JSON.stringify(uid));
     addUserDetails();
   }
 
