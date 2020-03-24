@@ -28,7 +28,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
         Image: {
             screen: Hygiene,
             navigationOptions: {
-                tabBarLabel: 'Hygiene',
+                tabBarLabel: 'Hygiene Videos',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
                         <Icon style={[{ color: tintColor }]} size={25} name={'ios-water'} />
@@ -45,7 +45,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
                 tabBarLabel: 'Resources',
                 tabBarIcon: ({ tintColor }) => (
                     <View>
-                        <Icon style={[{ color: tintColor }]} size={25} name={'ios-cart'} />
+                        <Icon style={[{ color: tintColor }]} size={25} name={'ios-copy'} />
                     </View>),
             }
         },

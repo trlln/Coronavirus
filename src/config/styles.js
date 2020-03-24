@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     mainheading: {
-      textAlign: 'left',
+      textAlign: 'center',
       fontSize: 35,
       backgroundColor: 'orange',
       color: 'brown',
@@ -71,11 +71,11 @@ export const styles = StyleSheet.create({
         borderRadius: 50
       },
       hyperlinks:{
-        textAlign: 'center',
+        textAlign: 'left',
         justifyContent: 'center',
         fontSize: 18,
-        textDecorationLine: 'underline',
-        marginTop: 5
+        marginTop: 5,
+        marginLeft: '3%',
       },
       pickerStyle:{
         height: 40,
@@ -87,12 +87,12 @@ export const styles = StyleSheet.create({
       },
       footerstyle:{
         width: '100%',
-        height: '12%',
+        height: '10%',
         backgroundColor: 'green',
         position: 'absolute',
         textAlign: 'center',
         bottom: 0,
-        fontSize: 20,
+        fontSize: 18,
         color: 'white',
         fontWeight: 'bold',
       }

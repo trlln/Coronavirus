@@ -75,9 +75,7 @@ class HomeScreen extends React.Component {
       <View style={styles.container1}>
       <Text style = {styles.mainheading}> Karona Saaf </Text>
       <ScrollView style = {styles.margins}>
-      <Text style = {styles.textStyle1}>Personalize your notifications: </Text>
-
-      <Text style = {styles.textStyle1}>1.Choose the frequency with which you want to receive reminder notifications </Text>
+      <Text style = {styles.textStyle1}>1.Reminder Frequency </Text>
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.frequency}
               onValueChange={(itemValue, itemPosition) =>
@@ -87,7 +85,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="Every 2 hours" value="2" />
           <Picker.Item label="Every 3 hours" value="3" />
         </Picker>
-        <Text style={styles.textStyle1}>2.Choose the starting time from when you want to start receiving notifications:</Text>
+        <Text style={styles.textStyle1}>2.Start Time</Text>
 
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.startTime}
@@ -118,7 +116,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
         </Picker>
-        <Text style={styles.textStyle1}>3.Choose the ending time after which we will stop sending notifications to you for the day:</Text>
+        <Text style={styles.textStyle1}>3.End Time:</Text>
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.endTime}
           onValueChange={(itemValue, itemPosition) =>
@@ -148,10 +146,12 @@ class HomeScreen extends React.Component {
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
         </Picker>
-        <Text style={styles.textStyle2}> Save your settings by pressing the following button: </Text>
+        <Text> {'\n'}</Text>
 
-        <Button color='green' onPress={async () => {
 
+
+        <Button color='green'  onPress={async () => {
+          //(Math.abs(this.state.startTime - this.state.endTime) < 8) && (this.state.startTime != this.state.endTime)
           console.log(this.state.startTime)
           console.log(this.state.endTime)
           console.log(this.state.frequency)
@@ -200,12 +200,12 @@ class HomeScreen extends React.Component {
           //     }
           //     );
 
-              Alert.alert("Schedule updated!")
+              Alert.alert("Your schedule has been updated.")
 
-        }} title="Push" />
+        }} title="Save your settings" />
 
-        
-       
+
+
       <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
       <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(+911123978046)}}>
           <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> COVID-19 Helpline </Text>
@@ -215,7 +215,7 @@ class HomeScreen extends React.Component {
       </TouchableOpacity>
       </ScrollView>
       <Text style = {styles.footerstyle}>Brought To You By
-        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 25}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 23}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
       </Text>
       </View>
     );

@@ -7,9 +7,16 @@ import { createUser } from '../service/createUser';
 
 const slides = [
   {
+    key: 'thanks',
+    title: 'THANK YOU FOR DOWNLOADING',
+    text: 'The next three screens will guide you through a tutorial of the app.',
+    image: require('../../assets/thanks.jpg'),
+    backgroundColor: 'orange',
+  },
+  {
     key: 'notifications',
     title: '1. PERSONALIZE YOUR NOTIFICATIONS',
-    text: 'Choose a frequency and the starting and ending times according to your convenience. We will send you reminder notifications to wash your hands, and practise other hygiene practices based on your choices.',
+    text: 'Choose a frequency, the start and end times according to your convenience. We will send you reminder notifications to practise hygiene practices.',
     image: require('../../assets/1.png'),
   },
   {
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: 'green',
+    backgroundColor: 'green'
   },
   image: {
     width: 50,
@@ -44,11 +51,11 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     paddingHorizontal: 10,
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 20,
     marginBottom: "10%",
   },
   title: {
-    fontSize: 25,
+    fontSize: 28,
     color: 'yellow',
     backgroundColor: 'transparent',
     textAlign: 'center',
@@ -57,6 +64,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
+
 
 class Tutorial extends React.Component {
   state = {
@@ -92,7 +100,7 @@ class Tutorial extends React.Component {
     if (this.state.showRealApp) {
       return <TabNavigator />;
     } else {
-      return <AppIntroSlider renderItem={this._renderItem} slides={slides} onDone={this._onDone}/>;
+      return <AppIntroSlider renderItem={this._renderItem} slides={slides} showSkipButton={true} onSkip={this._onDone} onDone={this._onDone}/>;
     }
   }
 }
