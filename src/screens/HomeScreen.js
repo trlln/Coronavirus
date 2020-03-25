@@ -75,6 +75,7 @@ class HomeScreen extends React.Component {
       <View style={styles.container1}>
       <Text style = {styles.mainheading}> Karona Saaf </Text>
       <ScrollView style = {styles.margins}>
+      <Text style = {styles.textStyle2}>Choose the start time, end time and the reminder frequency of notifications below: </Text>
       <Text style = {styles.textStyle1}>1.Reminder Frequency </Text>
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.frequency}
@@ -151,56 +152,62 @@ class HomeScreen extends React.Component {
 
 
         <Button color='green'  onPress={async () => {
-          //(Math.abs(this.state.startTime - this.state.endTime) < 8) && (this.state.startTime != this.state.endTime)
-          console.log(this.state.startTime)
-          console.log(this.state.endTime)
-          console.log(this.state.frequency)
+              Alert.alert("Update Schedule?",
+              "Your notifications schedule will be set as follows: \n 1. Start Time: " + this.state.startTime%12 + (this.state.startTime<12 ? " AM": " PM") + " \n 2. End Time: " + this.state.endTime%12 + (this.state.endTime<12 ? " AM": " PM") + "\n 3. Frequency: " + this.state.frequency + " hour",
+              [
+                {text: 'Update Schedule', onPress: () =>
+              {
+                //(Math.abs(this.state.startTime - this.state.endTime) < 8) && (this.state.startTime != this.state.endTime)
+                console.log(this.state.startTime)
+                console.log(this.state.endTime)
+                console.log(this.state.frequency)
 
-          // AsyncStorage.removeItem('firstLogin')
+                // AsyncStorage.removeItem('firstLogin')
 
-          // // Selecting random notification
-          let a = Math.floor(Math.random()*8);
-          var notification = preventiveNotification[a]
+                // // Selecting random notification
+                // Alert.alert(JSON.stringify(notification.title))
 
-          // Alert.alert(JSON.stringify(notification.title))
+                // Immediate notification
+                // PushNotification.localNotification({
+                //   title: notification.title,
+                //   message: notification.body,
+                // })
+                PushNotification.cancelAllLocalNotifications();
 
-          // Immediate notification
-          // PushNotification.localNotification({
-          //   title: notification.title,
-          //   message: notification.body,
-          // })
-          PushNotification.cancelAllLocalNotifications();
+                // Scheduling notification
+                PushNotification.localNotificationSchedule(
+                {
+                  title:preventiveNotification[Math.floor(Math.random()*8)].title,
+                  message: preventiveNotification[Math.floor(Math.random()*8)].body,
+                  repeatType: 'time',
+                  repeatTime: 60 * 1000 * 60 * this.state.frequency,
+                  date: new Date(Date.now()),
+                })
 
-          // Scheduling notification
-          PushNotification.localNotificationSchedule({
-            title: notification.title,
-            message: notification.body,
-            repeatType: 'time',
-            repeatTime: 60 * 1000 * 60 * this.state.frequency,
-            date: new Date(Date.now()),
-          })
-
-
-          // // Network call to configure
-          // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-          // axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
-          //         "userInfo": {
-          //             "uid": uid,
-          //             "personalize": {
-          //               start: this.state.startTime,
-          //               end: this.state.endTime,
-          //               interval: this.state.frequency
-          //             }
-          //         }
-          //     }).then(() => {
-          //         console.log("success")
-          //     }
-          //     ).catch(() => {
-          //       console.log('fail')
-          //     }
-          //     );
-
-              Alert.alert("Your schedule has been updated.")
+                // // Network call to configure
+                // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+                // axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+                //         "userInfo": {
+                //             "uid": uid,
+                //             "personalize": {
+                //               start: this.state.startTime,
+                //               end: this.state.endTime,
+                //               interval: this.state.frequency
+                //             }
+                //         }
+                //     }).then(() => {
+                //         console.log("success")
+                //     }
+                //     ).catch(() => {
+                //       console.log('fail')
+                //     }
+                //     );
+              }
+            },
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              ],
+              { cancelable: false }
+            )
 
         }} title="Save your settings" />
 
@@ -215,7 +222,7 @@ class HomeScreen extends React.Component {
       </TouchableOpacity>
       </ScrollView>
       <Text style = {styles.footerstyle}>Brought To You By
-        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 23}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 20}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
       </Text>
       </View>
     );

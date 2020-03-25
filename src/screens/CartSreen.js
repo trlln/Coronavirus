@@ -38,7 +38,7 @@ class CartScreen extends React.Component {
             </Text>
             </ScrollView>
             <Text style = {styles.footerstyle}>Brought To You By
-              <Text style = {{textDecorationLine: 'underline', color: 'orange', fontSize: 23}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+              <Text style = {{textDecorationLine: 'underline', color: 'orange', fontSize: 20}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
             </Text>
             </View>
         );

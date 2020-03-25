@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
       },
       margins: {
-        marginBottom: "20%",
+        marginBottom: "15.7%",
       },
       textStyle3:{
         marginBottom: 5,
@@ -87,7 +87,7 @@ export const styles = StyleSheet.create({
       },
       footerstyle:{
         width: '100%',
-        height: '10%',
+        height: '11%',
         backgroundColor: 'green',
         position: 'absolute',
         textAlign: 'center',

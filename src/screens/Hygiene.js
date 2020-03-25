@@ -23,7 +23,7 @@ class Hygiene extends React.Component {
                 apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
                 videoIds:["dK-O0Bv7HK4"],
                 autoplay: true,
-                lightboxMode: false,
+                lightboxMode: true,
                 startIndex: 1,
                 startTime: 0,
               })
@@ -46,7 +46,7 @@ class Hygiene extends React.Component {
                   apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
                   videoIds: ["1APwq1df6Mw"],
                   autoplay: true,
-                  lightboxMode: false,
+                  lightboxMode: true,
                   startIndex: 1,
                   startTime: 0,
                 })
@@ -66,7 +66,7 @@ class Hygiene extends React.Component {
                   apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
                   videoIds: ["Y9VgmhxtJFk"],
                   autoplay: true,
-                  lightboxMode: false,
+                  lightboxMode: true,
                   startIndex: 1,
                   startTime: 0,
                 })
@@ -86,7 +86,7 @@ class Hygiene extends React.Component {
               apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
               videoIds: ["I47QOyX71kg"],
               autoplay: true,
-              lightboxMode: false,
+              lightboxMode: true,
               startIndex: 1,
               startTime: 0,
             })
@@ -107,7 +107,7 @@ class Hygiene extends React.Component {
               apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
               videoIds:["mOV1aBVYKGA"],
               autoplay: true,
-              lightboxMode: false,
+              lightboxMode: true,
               startIndex: 1,
               startTime: 0,
             })
@@ -129,7 +129,7 @@ class Hygiene extends React.Component {
               apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
               videoIds:["TH95P9cYhW0"],
               autoplay: true,
-              lightboxMode: false,
+              lightboxMode: true,
               startIndex: 1,
               startTime: 0,
             })
@@ -146,7 +146,7 @@ class Hygiene extends React.Component {
 
         </ScrollView>
         <Text style = {styles.footerstyle}>Brought To You By
-          <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 23}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
+          <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 20}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
         </Text>
         </View>
       )

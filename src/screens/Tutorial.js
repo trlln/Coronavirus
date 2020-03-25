@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Text, Image, AsyncStorage, Dimensions } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import TabNavigator from '../navigators/TabNavigator';
 import { addUserDetails } from '../service/addUserDetails';
@@ -33,6 +33,10 @@ const slides = [
   }
 ];
 
+const dimensions = Dimensions.get('window');
+const imageHeight = Math.round(dimensions.width * 0.8);
+const imageWidth = dimensions.width;
+
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
@@ -41,8 +45,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'green'
   },
   image: {
-    width: 50,
-    height: 200,
+    width: imageWidth,
+    height: imageHeight ,
     resizeMode: 'stretch'
   },
   text: {
@@ -85,7 +89,7 @@ class Tutorial extends React.Component {
     return (
       <View style={styles.slide}>
         <Text style={styles.title}>{item.title}</Text>
-        <Image source={item.image} />
+        <Image source={item.image} style={styles.image} />
         <Text style={styles.text}>{item.text}</Text>
       </View>
     );
