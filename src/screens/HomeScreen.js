@@ -5,6 +5,9 @@ import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Pic
 import { styles } from '../config/styles'
 import { preventiveNotification } from '../config/notificationData'
 import axios from 'axios';
+import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
+import RNSimData from 'react-native-sim-data'
+
 
 class HomeScreen extends React.Component {
 
@@ -13,6 +16,17 @@ class HomeScreen extends React.Component {
     startTime: 0,
     endTime: 0
   };
+
+  setDefaultState = () => {
+
+    var defaultState = JSON.parse(await AsyncStorage.getItem('defaultState'));
+    if(defaultState){
+      this.state.frequency = defaultState.frequency;
+      this.state.startTime = defaultState.startTime;
+      this.state.endTime = defaultState.endTime;
+    }
+
+  }
 
   dialCall = (number) => {
     let phoneNumber = '';
@@ -23,12 +37,121 @@ class HomeScreen extends React.Component {
 
   async componentDidMount() {
 
+    setDefaultState();
+
+    // Configure BAckground location
+    BackgroundGeolocation.configure({
+      locationProvider: BackgroundGeolocation.DISTANCE_FILTER_PROVIDER,
+      desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
+      stationaryRadius: 15,
+      debug: false,
+      distanceFilter: 15,
+      stopOnTerminate: false,
+      startOnBoot: true,
+      interval: 1000 * 60 * 5,
+      fastestInterval: 1000 * 60 * 6,
+      activitiesInterval: 1000 * 60 * 7,
+      stopOnStillActivity: true, // on still activity might change
+      notificationsEnabled: false, // change
+      startForeground: true,
+      notificationTitle: 'Background tracking', // remove
+      notificationText: 'enabled', // remove
+      url: 'https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserLocations', // might create a new function to handle
+      syncUrl: 'https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserLocations', // might create a new function to handle
+      
+      httpHeaders: {
+        
+      },
+      // customize post properties
+      postTemplate: {
+          uid: '697081c7-f029-47e9-8faf-1f2702d6a515',
+          lat: '@latitude',
+          lon: '@longitude',
+          alt: '@altitude',
+          speed: '@speed',
+          accuracy: '@accuracy',
+          time: '@time'
+      },
+    });
+
+
+    try{
+      // to know "IN_VEHICLE", "ON_BICYCLE", "ON_FOOT", "RUNNING", "STILL",
+      // "TILTING", "UNKNOWN", "WALKING"
+      const eventSubscription = BackgroundGeolocation.on('event', () => null);
+    }
+    catch(err) {
+      console.log('not registered')
+    }
+
+    // BackgroundGeolocation.on('stop', () => {
+    //   console.log('[INFO] BackgroundGeolocation service has been stopped');
+    // });
+
+    BackgroundGeolocation.on('error', (error) => {
+      console.log('[ERROR] BackgroundGeolocation error:', error);
+    });
+
+    BackgroundGeolocation.on('authorization', (status) => {
+      console.log('[INFO] BackgroundGeolocation authorization status: ' + status);
+      if (status !== BackgroundGeolocation.AUTHORIZED) {
+        // we need to set delay or otherwise alert may not be shown
+        setTimeout(() =>
+          Alert.alert('App requires location tracking permission', 'Would you like to open app settings?', [
+            { text: 'Yes', onPress: () => BackgroundGeolocation.showAppSettings() },
+            { text: 'No', onPress: () => console.log('No Pressed'), style: 'cancel' }
+          ]), 1000);
+      }
+    });
+
+    let uid = await AsyncStorage.getItem('uid')
+    // post from here
+    BackgroundGeolocation.on('background', () => {
+      console.log(`[INFO] App is in background ${uid}`);
+    });
+
+    BackgroundGeolocation.on('foreground', () => {
+      console.log(`[INFO] App is in foreground ${uid}`);
+    });
+
+    // just checking status on rerenderr // TODO: remvoe
+    BackgroundGeolocation.checkStatus(status => {
+      console.log('[INFO] BackgroundGeolocation service is running', status.isRunning);
+      console.log('[INFO] BackgroundGeolocation services enabled', status.locationServicesEnabled);
+      console.log('[INFO] BackgroundGeolocation auth status: ' + status.authorization);
+
+      // you don't need to check status before start (this is just the example)
+      if (!status.isRunning) {
+        BackgroundGeolocation.start(); //triggers start on start event
+      }
+    });
+
+    BackgroundGeolocation.on('start', () => {
+      console.log('[INFO] BackgroundGeolocation service has been started');
+    });
+
+    BackgroundGeolocation.on('location', (location) => {
+      // handle your locations here
+      // to perform long running operation on iOS
+      // you need to create background task
+      console.log('location here')
+      BackgroundGeolocation.startTask(taskKey => {
+        // execute long running task
+        // eg. ajax post location
+        // IMPORTANT: task has to be ended by endTask
+        console.log('location started')
+        console.log(`${uid} ${JSON.stringify(location)}`);
+        BackgroundGeolocation.endTask(taskKey);
+      });
+    });
+
 
     // Configuring Push notifications
     PushNotification.configure({
       // (optional) Called when Token is generated (iOS and Android)
       onRegister: function (token) {
-        console.log("TOKEN:", token);
+        // TODO: post this token to the serevr
+        // console.log("TOKEN:", token);
       },
 
       // (required) Called when a remote or local notification is opened or received
@@ -75,7 +198,7 @@ class HomeScreen extends React.Component {
       <View style={styles.container1}>
       <Text style = {styles.mainheading}> Karona Saaf </Text>
       <ScrollView style = {styles.margins}>
-      <Text style = {styles.textStyle1}>1.Reminder Frequency </Text>
+      <Text style = {styles.textStyle1}>Reminder Frequency </Text>
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.frequency}
               onValueChange={(itemValue, itemPosition) =>
@@ -85,7 +208,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="Every 2 hours" value="2" />
           <Picker.Item label="Every 3 hours" value="3" />
         </Picker>
-        <Text style={styles.textStyle1}>2.Start Time</Text>
+        <Text style={styles.textStyle1}>Start Time</Text>
 
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.startTime}
@@ -116,7 +239,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
         </Picker>
-        <Text style={styles.textStyle1}>3.End Time:</Text>
+        <Text style={styles.textStyle1}>End Time</Text>
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.endTime}
           onValueChange={(itemValue, itemPosition) =>
@@ -181,7 +304,27 @@ class HomeScreen extends React.Component {
           })
 
 
-          // // Network call to configure
+          // BackgroundGeolocation.on('start', () => {
+          //   console.log('[INFO] BackgroundGeolocation service has been started');
+          // });
+
+          // BackgroundGeolocation.on('location', (location) => {
+          //   // handle your locations here
+          //   // to perform long running operation on iOS
+          //   // you need to create background task
+          //   console.log('location here')
+          //   BackgroundGeolocation.startTask(taskKey => {
+          //     // execute long running task
+          //     // eg. ajax post location
+          //     // IMPORTANT: task has to be ended by endTask
+          //     console.log('location started')
+          //     console.log(`${uid} ${JSON.stringify(location)}`);
+          //     BackgroundGeolocation.endTask(taskKey);
+          //   });
+          // });
+
+
+          // // // Network call to configure
           // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
           // axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
           //         "userInfo": {
@@ -200,6 +343,17 @@ class HomeScreen extends React.Component {
           //     }
           //     );
 
+
+          try{
+            console.log(RNSimData.getSimInfo().deviceId0)
+          }
+          catch(err) {
+            console.log('sim data error')
+          }
+
+          // Saving current state
+          let defaultState = this.state;
+          AsyncStorage.setItem('defaultState', JSON.stringify(defaultState))
               Alert.alert("Your schedule has been updated.")
 
         }} title="Save your settings" />

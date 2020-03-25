@@ -19,6 +19,9 @@ import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; // <-
 import androidx.multidex.MultiDexApplication;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 
+import com.marianhello.bgloc.react.BackgroundGeolocationPackage;  // <--- Import Package
+
+
 
 public class MainApplication extends MultiDexApplication implements ReactApplication {
 
@@ -38,7 +41,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
           packages.add(new RNFirebaseMessagingPackage()); // <-- Add this line
           packages.add(new RNFirebaseNotificationsPackage()); // <-- Add this line
           packages.add(new SafeAreaContextPackage());
-
+          // packages.add(new BackgroundGeolocationPackage()); // <---- Add the Package
           return packages;
         }
 
