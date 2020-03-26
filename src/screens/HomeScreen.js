@@ -189,25 +189,53 @@ class HomeScreen extends React.Component {
                     // AsyncStorage.removeItem('firstLogin')
 
                     // // Selecting random notification
-                    // Alert.alert(JSON.stringify(notification.title))
-
+                    
                     // Immediate notification
                     // PushNotification.localNotification({
-                    //   title: notification.title,
-                    //   message: notification.body,
-                    // })
-                    PushNotification.cancelAllLocalNotifications();
+                      //   title: notification.title,
+                      //   message: notification.body,
+                      // })
+                      await PushNotification.cancelAllLocalNotifications();
+                      
+                      // Scheduling notifications and randomizing them
+                      // let repeatTime = 60 * 1000 * 60 * this.state.frequency;
+                      // alert(JSON.stringify(notificationObject))
+                      
 
-                    // Scheduling notifications and randomizing them
-                    PushNotification.localNotificationSchedule(
-                      {
-                        title: preventiveNotification[Math.floor(Math.random() * 8)].title,
-                        message: preventiveNotification[Math.floor(Math.random() * 8)].body,
+                      PushNotification.localNotificationSchedule({
+                        ...preventiveNotification[0],
                         repeatType: 'time',
-                        repeatTime: 60 * 1000 * 60 * this.state.frequency,
+                        repeatTime: 60 * 1000 * 60 * this.state.frequency * 4,
                         date: new Date(Date.now()),
                       }
+                      )
+
+                      PushNotification.localNotificationSchedule({
+                        ...preventiveNotification[1],
+                        repeatType: 'time',
+                        repeatTime: 60 * 1000 * 60 * this.state.frequency * 4,
+                        date: new Date(Date.now() + 60 * 1000 * 60 * this.state.frequency),
+                      }
+                      
                     )
+
+                    PushNotification.localNotificationSchedule({
+                      ...preventiveNotification[2],
+                      repeatType: 'time',
+                      repeatTime: 60 * 1000 * 60 * this.state.frequency * 4,
+                      date: new Date(Date.now() + 2 * 60 * 1000 * 60 * this.state.frequency),
+                    }
+                    
+                  )
+
+                  PushNotification.localNotificationSchedule({
+                    ...preventiveNotification[4],
+                    repeatType: 'time',
+                    repeatTime: 60 * 1000 * 60 * this.state.frequency * 4,
+                    date: new Date(Date.now() + 3 * 60 * 1000 * 60 * this.state.frequency),
+                  }
+                  
+                )
 
                     // // Network call to configure
                     const uid = JSON.parse(await AsyncStorage.getItem('uid'));

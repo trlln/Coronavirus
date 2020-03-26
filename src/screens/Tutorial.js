@@ -90,9 +90,9 @@ class Tutorial extends React.Component {
     BackgroundGeolocation.configure({
       locationProvider: BackgroundGeolocation.DISTANCE_FILTER_PROVIDER,
       desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
-      stationaryRadius: 15,
+      stationaryRadius: 50,
       debug: false,
-      distanceFilter: 15,
+      distanceFilter: 50,
       stopOnTerminate: false,
       startOnBoot: true,
       interval: 1000 * 60 * 5,
