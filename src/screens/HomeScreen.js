@@ -1,7 +1,7 @@
 import React from 'react'
 import PushNotification from 'react-native-push-notification'
-import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
-
+import { ScrollView, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
 import { styles } from '../config/styles'
 import { preventiveNotification } from '../config/notificationData'
 import axios from 'axios';
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 class HomeScreen extends React.Component {
 
-  constructor(){
+  constructor() {
     super()
     this.state = {
       frequency: 0.5,
@@ -21,13 +21,13 @@ class HomeScreen extends React.Component {
   setDefaultState = async () => {
 
     var defaultState = JSON.parse(await AsyncStorage.getItem('defaultState'));
-    if(defaultState){
+    if (defaultState) {
       this.setState({
         frequency: defaultState.frequency,
         startTime: defaultState.startTime,
         endTime: defaultState.endTime
       })
-      
+
     }
 
   }
@@ -43,7 +43,7 @@ class HomeScreen extends React.Component {
 
     this.setDefaultState();
 
-    
+
 
 
     // Configuring Push notifications
@@ -96,159 +96,160 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container1}>
-      <Text style = {styles.mainheading}> Karona Saaf </Text>
-      <ScrollView style = {styles.margins}>
-      <Text style = {styles.textStyle1}>Reminder Frequency </Text>
-      <Picker style={styles.pickerStyle}
-              selectedValue={this.state.frequency}
-              onValueChange={(itemValue, itemPosition) =>
-                  this.setState({frequency: itemValue})} mode = 'dropdown'>
-          <Picker.Item label="Every 30 minutes" value="0.5" />
-          <Picker.Item label="Every hour" value="1" />
-          <Picker.Item label="Every 2 hours" value="2" />
-          <Picker.Item label="Every 3 hours" value="3" />
-        </Picker>
-        <Text style={styles.textStyle1}>Start Time</Text>
+        <Text style={styles.mainheading}> Karona Saaf </Text>
+        <ScrollView style={styles.margins}>
+          <Text style={styles.textStyle2}>Choose the start time, end time and the reminder frequency of notifications below: </Text>
+          <Text style={styles.textStyle1}>Reminder Frequency </Text>
+          <Picker style={styles.pickerStyle}
+            selectedValue={this.state.frequency}
+            onValueChange={(itemValue, itemPosition) =>
+              this.setState({ frequency: itemValue })} mode='dropdown'>
+            <Picker.Item label="Every 30 minutes" value="0.5" />
+            <Picker.Item label="Every hour" value="1" />
+            <Picker.Item label="Every 2 hours" value="2" />
+            <Picker.Item label="Every 3 hours" value="3" />
+          </Picker>
+          <Text style={styles.textStyle1}>Start Time</Text>
 
-        <Picker style={styles.pickerStyle}
-          selectedValue={this.state.startTime}
-          onValueChange={(itemValue, itemPosition) =>
-            this.setState({ startTime: itemValue })} mode='dropdown'>
-          <Picker.Item label="00:00 AM" value="0" />
-          <Picker.Item label="1:00 AM" value="1" />
-          <Picker.Item label="2:00 AM" value="2" />
-          <Picker.Item label="3:00 AM" value="3" />
-          <Picker.Item label="4:00 AM" value="4" />
-          <Picker.Item label="5:00 AM" value="5" />
-          <Picker.Item label="6:00 AM" value="6" />
-          <Picker.Item label="7:00 AM" value="7" />
-          <Picker.Item label="8:00 AM" value="8" />
-          <Picker.Item label="9:00 AM" value="9" />
-          <Picker.Item label="10:00 AM" value="10" />
-          <Picker.Item label="11:00 AM" value="11" />
-          <Picker.Item label="12:00 PM" value="12" />
-          <Picker.Item label="1:00 PM" value="13" />
-          <Picker.Item label="2:00 PM" value="14" />
-          <Picker.Item label="3:00 PM" value="15" />
-          <Picker.Item label="4:00 PM" value="16" />
-          <Picker.Item label="5:00 PM" value="17" />
-          <Picker.Item label="6:00 PM" value="18" />
-          <Picker.Item label="7:00 PM" value="19" />
-          <Picker.Item label="8:00 PM" value="20" />
-          <Picker.Item label="9:00 PM" value="21" />
-          <Picker.Item label="10:00 PM" value="22" />
-          <Picker.Item label="11:00 PM" value="23" />
-        </Picker>
-        <Text style={styles.textStyle1}>End Time</Text>
-        <Picker style={styles.pickerStyle}
-          selectedValue={this.state.endTime}
-          onValueChange={(itemValue, itemPosition) =>
-            this.setState({ endTime: itemValue })} mode='dropdown'>
-          <Picker.Item label="00:00 AM" value="0" />
-          <Picker.Item label="1:00 AM" value="1" />
-          <Picker.Item label="2:00 AM" value="2" />
-          <Picker.Item label="3:00 AM" value="3" />
-          <Picker.Item label="4:00 AM" value="4" />
-          <Picker.Item label="5:00 AM" value="5" />
-          <Picker.Item label="6:00 AM" value="6" />
-          <Picker.Item label="7:00 AM" value="7" />
-          <Picker.Item label="8:00 AM" value="8" />
-          <Picker.Item label="9:00 AM" value="9" />
-          <Picker.Item label="10:00 AM" value="10" />
-          <Picker.Item label="11:00 AM" value="11" />
-          <Picker.Item label="12:00 PM" value="12" />
-          <Picker.Item label="1:00 PM" value="13" />
-          <Picker.Item label="2:00 PM" value="14" />
-          <Picker.Item label="3:00 PM" value="15" />
-          <Picker.Item label="4:00 PM" value="16" />
-          <Picker.Item label="5:00 PM" value="17" />
-          <Picker.Item label="6:00 PM" value="18" />
-          <Picker.Item label="7:00 PM" value="19" />
-          <Picker.Item label="8:00 PM" value="20" />
-          <Picker.Item label="9:00 PM" value="21" />
-          <Picker.Item label="10:00 PM" value="22" />
-          <Picker.Item label="11:00 PM" value="23" />
-        </Picker>
-        <Text> {'\n'}</Text>
-
-
-
-        <Button color='green'  onPress={async () => {
-          //(Math.abs(this.state.startTime - this.state.endTime) < 8) && (this.state.startTime != this.state.endTime)
-          console.log(this.state.startTime)
-          console.log(this.state.endTime)
-          console.log(this.state.frequency)
-
-          // AsyncStorage.removeItem('firstLogin')
-
-          // // Selecting random notification
-          let a = Math.floor(Math.random()*8);
-          var notification = preventiveNotification[a]
-
-          // Alert.alert(JSON.stringify(notification.title))
-
-          // Immediate notification
-          // PushNotification.localNotification({
-          //   title: notification.title,
-          //   message: notification.body,
-          // })
-          PushNotification.cancelAllLocalNotifications();
-
-          // Scheduling notification
-          PushNotification.localNotificationSchedule({
-            title: notification.title,
-            message: notification.body,
-            repeatType: 'time',
-            repeatTime: 60 * 1000 * 60 * this.state.frequency,
-            date: new Date(Date.now()),
-          })
+          <Picker style={styles.pickerStyle}
+            selectedValue={this.state.startTime}
+            onValueChange={(itemValue, itemPosition) =>
+              this.setState({ startTime: itemValue })} mode='dropdown'>
+            <Picker.Item label="00:00 AM" value="0" />
+            <Picker.Item label="1:00 AM" value="1" />
+            <Picker.Item label="2:00 AM" value="2" />
+            <Picker.Item label="3:00 AM" value="3" />
+            <Picker.Item label="4:00 AM" value="4" />
+            <Picker.Item label="5:00 AM" value="5" />
+            <Picker.Item label="6:00 AM" value="6" />
+            <Picker.Item label="7:00 AM" value="7" />
+            <Picker.Item label="8:00 AM" value="8" />
+            <Picker.Item label="9:00 AM" value="9" />
+            <Picker.Item label="10:00 AM" value="10" />
+            <Picker.Item label="11:00 AM" value="11" />
+            <Picker.Item label="12:00 PM" value="12" />
+            <Picker.Item label="1:00 PM" value="13" />
+            <Picker.Item label="2:00 PM" value="14" />
+            <Picker.Item label="3:00 PM" value="15" />
+            <Picker.Item label="4:00 PM" value="16" />
+            <Picker.Item label="5:00 PM" value="17" />
+            <Picker.Item label="6:00 PM" value="18" />
+            <Picker.Item label="7:00 PM" value="19" />
+            <Picker.Item label="8:00 PM" value="20" />
+            <Picker.Item label="9:00 PM" value="21" />
+            <Picker.Item label="10:00 PM" value="22" />
+            <Picker.Item label="11:00 PM" value="23" />
+          </Picker>
+          <Text style={styles.textStyle1}>End Time</Text>
+          <Picker style={styles.pickerStyle}
+            selectedValue={this.state.endTime}
+            onValueChange={(itemValue, itemPosition) =>
+              this.setState({ endTime: itemValue })} mode='dropdown'>
+            <Picker.Item label="00:00 AM" value="0" />
+            <Picker.Item label="1:00 AM" value="1" />
+            <Picker.Item label="2:00 AM" value="2" />
+            <Picker.Item label="3:00 AM" value="3" />
+            <Picker.Item label="4:00 AM" value="4" />
+            <Picker.Item label="5:00 AM" value="5" />
+            <Picker.Item label="6:00 AM" value="6" />
+            <Picker.Item label="7:00 AM" value="7" />
+            <Picker.Item label="8:00 AM" value="8" />
+            <Picker.Item label="9:00 AM" value="9" />
+            <Picker.Item label="10:00 AM" value="10" />
+            <Picker.Item label="11:00 AM" value="11" />
+            <Picker.Item label="12:00 PM" value="12" />
+            <Picker.Item label="1:00 PM" value="13" />
+            <Picker.Item label="2:00 PM" value="14" />
+            <Picker.Item label="3:00 PM" value="15" />
+            <Picker.Item label="4:00 PM" value="16" />
+            <Picker.Item label="5:00 PM" value="17" />
+            <Picker.Item label="6:00 PM" value="18" />
+            <Picker.Item label="7:00 PM" value="19" />
+            <Picker.Item label="8:00 PM" value="20" />
+            <Picker.Item label="9:00 PM" value="21" />
+            <Picker.Item label="10:00 PM" value="22" />
+            <Picker.Item label="11:00 PM" value="23" />
+          </Picker>
+          <Text> {'\n'}</Text>
 
 
 
+          <Button color='green' onPress={async () => {
 
-          // // // Network call to configure
-          const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-          axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
-                  "userInfo": {
-                      "uid": uid,
-                      "personalize": {
-                        start: this.state.startTime,
-                        end: this.state.endTime,
-                        interval: this.state.frequency
+            Alert.alert("Update Schedule?",
+              "Your notifications schedule will be set as follows: \n 1. Start Time: " + this.state.startTime % 12 + (this.state.startTime < 12 ? " AM" : " PM") + " \n 2. End Time: " + this.state.endTime % 12 + (this.state.endTime < 12 ? " AM" : " PM") + "\n 3. Frequency: " + this.state.frequency + " hour",
+              [
+                {
+                  text: 'Update Schedule', onPress: async () => {
+                    //(Math.abs(this.state.startTime - this.state.endTime) < 8) && (this.state.startTime != this.state.endTime)
+                    console.log(this.state.startTime)
+                    console.log(this.state.endTime)
+                    console.log(this.state.frequency)
+
+                    // AsyncStorage.removeItem('firstLogin')
+
+                    // // Selecting random notification
+                    // Alert.alert(JSON.stringify(notification.title))
+
+                    // Immediate notification
+                    // PushNotification.localNotification({
+                    //   title: notification.title,
+                    //   message: notification.body,
+                    // })
+                    PushNotification.cancelAllLocalNotifications();
+
+                    // Scheduling notifications and randomizing them
+                    PushNotification.localNotificationSchedule(
+                      {
+                        title: preventiveNotification[Math.floor(Math.random() * 8)].title,
+                        message: preventiveNotification[Math.floor(Math.random() * 8)].body,
+                        repeatType: 'time',
+                        repeatTime: 60 * 1000 * 60 * this.state.frequency,
+                        date: new Date(Date.now()),
                       }
+                    )
+
+                    // // Network call to configure
+                    const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+                    axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+                      "userInfo": {
+                        "uid": uid,
+                        "personalize": {
+                          start: this.state.startTime,
+                          end: this.state.endTime,
+                          interval: this.state.frequency
+                        }
+                      }
+                    }).then(() => {
+                      console.log("success")
+                    }
+                    ).catch(() => {
+                      console.log('fail')
+                    }
+                    );
                   }
-              }).then(() => {
-                  console.log("success")
-              }
-              ).catch(() => {
-                console.log('fail')
-              }
-              );
+                },
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+              ],
+              { cancelable: false }
+            )
 
-
-          // Saving current state
-          let defaultState = {};
-          defaultState.startTime = this.state.startTime;
-          defaultState.endTime = this.state.endTime;
-          defaultState.frequency = this.state.frequency;
-          AsyncStorage.setItem('defaultState', JSON.stringify(defaultState))
-              Alert.alert("Your schedule has been updated.")
-
-        }} title="Save your settings" />
+          }
+          } buttonStyle={styles.button2} title="Save your settings" />
 
 
 
-      <Text style = {styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
-      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(+911123978046)}}>
-          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> COVID-19 Helpline </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={()=>{this.dialCall(1075)}}>
-          <Text style = {{color: 'brown', fontSize: 16, fontWeight: 'bold'}}> Toll Free Helpline </Text>
-      </TouchableOpacity>
-      </ScrollView>
-      <Text style = {styles.footerstyle}>Brought To You By
-        <Text style ={{textDecorationLine: 'underline', color: 'orange', fontSize: 23}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
-      </Text>
+          <Text style={styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
+          <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(+911123978046) }}>
+            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> COVID-19 Helpline </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(1075) }}>
+            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Toll Free Helpline </Text>
+          </TouchableOpacity>
+        </ScrollView>
+        <Text style={styles.footerstyle}>Brought To You By
+        <Text style={{ textDecorationLine: 'underline', color: 'orange', fontSize: 20 }} onPress={() => Linking.openURL('https://www.mychowkidar.co.in/')}>{'\n'}Team MyChowkidar </Text>
+        </Text>
       </View>
     );
   }
