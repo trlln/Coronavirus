@@ -1,7 +1,7 @@
 import React from 'react'
 import PushNotification from 'react-native-push-notification'
-import { ScrollView, Button, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
-
+import { ScrollView, Alert, StyleSheet, View, Text, Linking, Header, Picker, AsyncStorage, TouchableOpacity } from 'react-native';
+import { Button } from 'react-native-elements';
 import { styles } from '../config/styles'
 import { preventiveNotification } from '../config/notificationData'
 import axios from 'axios';
@@ -76,7 +76,7 @@ class HomeScreen extends React.Component {
       <Text style = {styles.mainheading}> Karona Saaf </Text>
       <ScrollView style = {styles.margins}>
       <Text style = {styles.textStyle2}>Choose the start time, end time and the reminder frequency of notifications below: </Text>
-      <Text style = {styles.textStyle1}>1.Reminder Frequency </Text>
+      <Text style = {styles.textStyle1}>Reminder Frequency </Text>
       <Picker style={styles.pickerStyle}
               selectedValue={this.state.frequency}
               onValueChange={(itemValue, itemPosition) =>
@@ -86,7 +86,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="Every 2 hours" value="2" />
           <Picker.Item label="Every 3 hours" value="3" />
         </Picker>
-        <Text style={styles.textStyle1}>2.Start Time</Text>
+        <Text style={styles.textStyle1}>Start Time</Text>
 
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.startTime}
@@ -117,7 +117,7 @@ class HomeScreen extends React.Component {
           <Picker.Item label="10:00 PM" value="22" />
           <Picker.Item label="11:00 PM" value="23" />
         </Picker>
-        <Text style={styles.textStyle1}>3.End Time:</Text>
+        <Text style={styles.textStyle1}>End Time</Text>
         <Picker style={styles.pickerStyle}
           selectedValue={this.state.endTime}
           onValueChange={(itemValue, itemPosition) =>
@@ -174,15 +174,16 @@ class HomeScreen extends React.Component {
                 // })
                 PushNotification.cancelAllLocalNotifications();
 
-                // Scheduling notification
+                // Scheduling notifications and randomizing them
                 PushNotification.localNotificationSchedule(
-                {
-                  title:preventiveNotification[Math.floor(Math.random()*8)].title,
-                  message: preventiveNotification[Math.floor(Math.random()*8)].body,
-                  repeatType: 'time',
-                  repeatTime: 60 * 1000 * 60 * this.state.frequency,
-                  date: new Date(Date.now()),
-                })
+                  {
+                   title:preventiveNotification[Math.floor(Math.random()*8)].title,
+                   message: preventiveNotification[Math.floor(Math.random()*8)].body,
+                   repeatType: 'time',
+                   repeatTime: 60 * 1000 * 60 * this.state.frequency,
+                   date: new Date(Date.now()),
+                }
+                )
 
                 // // Network call to configure
                 // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
@@ -209,7 +210,7 @@ class HomeScreen extends React.Component {
               { cancelable: false }
             )
 
-        }} title="Save your settings" />
+        }} buttonStyle={styles.button2} title="Save your settings" />
 
 
 

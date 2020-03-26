@@ -33,7 +33,8 @@ export const styles = StyleSheet.create({
       backgroundColor: 'orange',
       color: 'brown',
       fontWeight: 'bold',
-      height: '10%'
+      height: '10%',
+      justifyContent: 'center'
     },
       textStyle1:{
         margin: 5,
@@ -68,7 +69,24 @@ export const styles = StyleSheet.create({
         width: '50%',
         marginLeft: '25%',
         marginTop: 10,
-        borderRadius: 50
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        elevation: 5,
+        borderRadius:10,
+        borderWidth:1,
+        borderColor: 'black'
+      },
+      button2: {
+        alignItems: 'center',
+        backgroundColor: 'green',
+        marginLeft: '5%',
+        marginRight: '5%',
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        elevation: 5,
+        borderRadius:5,
+        borderWidth:1.5,
+        borderColor: 'black'
       },
       hyperlinks:{
         textAlign: 'left',
