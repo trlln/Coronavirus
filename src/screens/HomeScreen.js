@@ -207,23 +207,23 @@ class HomeScreen extends React.Component {
 
 
           // // // Network call to configure
-          // const uid = JSON.parse(await AsyncStorage.getItem('uid'));
-          // axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
-          //         "userInfo": {
-          //             "uid": uid,
-          //             "personalize": {
-          //               start: this.state.startTime,
-          //               end: this.state.endTime,
-          //               interval: this.state.frequency
-          //             }
-          //         }
-          //     }).then(() => {
-          //         console.log("success")
-          //     }
-          //     ).catch(() => {
-          //       console.log('fail')
-          //     }
-          //     );
+          const uid = JSON.parse(await AsyncStorage.getItem('uid'));
+          axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
+                  "userInfo": {
+                      "uid": uid,
+                      "personalize": {
+                        start: this.state.startTime,
+                        end: this.state.endTime,
+                        interval: this.state.frequency
+                      }
+                  }
+              }).then(() => {
+                  console.log("success")
+              }
+              ).catch(() => {
+                console.log('fail')
+              }
+              );
 
 
           // Saving current state
