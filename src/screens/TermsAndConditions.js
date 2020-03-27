@@ -45,7 +45,7 @@ class TermsAndConditions extends Component {
           <Text style={styles.tcL}>{'\u2022'} This app contains material which is owned by or licensed to us or information that is in public domain. This material includes, but is not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</Text>
           <Text style={styles.tcL}>{'\u2022'} From time to time, this app may also include links to other websites. These links are provided for your convenience to provide further information. They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).</Text>
           <Text style={styles.tcL}>{'\u2022'} Your use of this app and any dispute arising out of such use of the app is subject to the laws of India.</Text>
-          <Text style={styles.tcP}>Click on the button if you agree to the above terms of use:</Text>
+          <Text style={styles.tcP}>Click ACCEPT if you agree to the above Terms and Conditions:</Text>
         </ScrollView>
 
         <TouchableOpacity disabled={!this.state.accepted} onPress={async () => {

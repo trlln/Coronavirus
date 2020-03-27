@@ -33,7 +33,6 @@ export const styles = StyleSheet.create({
       backgroundColor: 'orange',
       color: 'brown',
       fontWeight: 'bold',
-      height: '10%',
       justifyContent: 'center'
     },
       textStyle1:{

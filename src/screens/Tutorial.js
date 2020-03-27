@@ -4,9 +4,6 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import TabNavigator from '../navigators/TabNavigator';
 import { addUserDetails } from '../service/addUserDetails';
 import { createUser } from '../service/createUser';
-import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
-import uuid from 'react-native-uuid'
-
 
 const slides = [
   {
@@ -19,18 +16,18 @@ const slides = [
   {
     key: 'notifications',
     title: '1. PERSONALIZE YOUR NOTIFICATIONS',
-    text: 'Choose a frequency, the start and end times according to your convenience. We will send you reminder notifications to practise hygiene practices.',
+    text: '',
     image: require('../../assets/1.png'),
   },
   {
     key: 'videos',
-    title: '2. HYGIENE PRACTICES',
-    text: 'We have some of the videos recommended by World Health Organization and other government organizations that demonstrate the best hygiene practices to follow.',
+    title: '2. GOOD HYGIENE PRACTICES',
+    text: 'The videos above are from Goverment of India, WHO and other trusted sources. We will update these videos to reflect best practices to tackle COVID-19.',
     image: require('../../assets/2.png'),
   },
   {
     key: 'resources',
-    title: '3. MISCELLANEOUS ',
+    title: '3. RESOURCES ',
     text: 'Here you can easily find links to reliable government organizations that show the latest statistics and precautions to follow.',
     image: require('../../assets/3.png'),
   }
@@ -192,10 +189,10 @@ class Tutorial extends React.Component {
     });
   }
 
-  sendUserDetails = async (uid) => {
-    await createUser(uid);
-    // await AsyncStorage.setItem('uid', JSON.stringify(uid));
-    addUserDetails(uid);
+  sendUserDetails = async () => {
+    let uid = await createUser();
+    await AsyncStorage.setItem('uid', JSON.stringify(uid));
+    addUserDetails();
   }
 
   _renderItem = ({ item }) => {
