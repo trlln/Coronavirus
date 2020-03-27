@@ -48,7 +48,7 @@ class TermsAndConditions extends Component {
           <Text style={styles.tcP}>Click ACCEPT if you agree to the above Terms and Conditions:</Text>
         </ScrollView>
 
-        <TouchableOpacity disabled={!this.state.accepted} onPress={async () => {
+        <TouchableOpacity onPress={async () => {
 
           // uncomment it
           AsyncStorage.setItem('firstLogin', 'Done');
