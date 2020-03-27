@@ -263,7 +263,7 @@ class HomeScreen extends React.Component {
             )
 
           }
-          } buttonStyle={styles.button2} title="Save your settings" />
+          } buttonStyle={styles.button2} title="Save" />
 
 
 
