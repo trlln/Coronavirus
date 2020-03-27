@@ -1,4 +1,4 @@
-package com.coronavirus;
+package com.mychowkidar.coronavirus;
 
 import android.app.Application;
 import android.content.Context;

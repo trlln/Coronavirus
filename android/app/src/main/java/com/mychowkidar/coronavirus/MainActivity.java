@@ -1,4 +1,4 @@
-package com.coronavirus;
+package com.mychowkidar.coronavirus;
 
 import com.facebook.react.ReactActivity;
 

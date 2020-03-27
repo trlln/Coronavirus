@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.coronavirus"
+        applicationId "com.mychowkidar.coronavirus"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true

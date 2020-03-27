@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.coronavirus">
+  package="com.mychowkidar.coronavirus">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- < Only if you're using GCM or localNotificationSchedule() > -->
