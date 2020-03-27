@@ -1,12 +1,12 @@
 export let preventiveNotification = [
     {
         title: 'Maintain social distancing',
-        message: 'Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing',
+        message: 'Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or sneezing.',
         
     },
     {
         title: 'Wash your hands frequently',
-        message: 'Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water',
+        message: 'Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.',
         
     },
     {
@@ -26,7 +26,7 @@ export let preventiveNotification = [
     },
     {
         title: 'Cover coughs and sneezes',
-        message: 'Cover your mouth and nose with a tissue when you cough or sneeze or use the inside of your elbow',
+        message: 'Cover your mouth and nose with a tissue when you cough or sneeze or use the inside of your elbow.',
         
     },
     {
@@ -36,7 +36,7 @@ export let preventiveNotification = [
     },
     {
         title: 'Throw Used Tissues',
-        message: 'Throw used tissues into closed bins immediately after use',
+        message: 'Throw used tissues into closed bins immediately after use.',
         
     },
     {

@@ -101,8 +101,8 @@ class Tutorial extends React.Component {
       stopOnStillActivity: true, // on still activity might change
       notificationsEnabled: false, // change
       startForeground: true,
-      notificationTitle: 'Background tracking', // remove
-      notificationText: 'enabled', // remove
+      notificationTitle: 'Stay home, Stay safe!', // remove
+      notificationText: 'Karona Saaf', // remove
       url: 'https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserLocations', // might create a new function to handle
       syncUrl: 'https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserLocations', // might create a new function to handle
       httpHeaders: {
