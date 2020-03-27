@@ -13,9 +13,8 @@ class Hygiene extends React.Component {
     render() {
       return (
         <View style={styles.container1}>
-        <Text style = {styles.mainheading}> Hygiene Videos </Text>
+        <Text style = {styles.mainheading}> Good Hygiene Practices </Text>
         <ScrollView style={styles.margins}>
-            <Text style = {styles.textStyle1}>{'\n'}Check out some of the hygiene videos </Text>
             <Text>{"\n"} </Text>
             {Platform.OS === 'android' &&
             <Button title = " Correct way to wash your hands." color='green'  buttonStyle={styles.button2}
