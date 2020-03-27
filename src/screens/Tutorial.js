@@ -8,7 +8,7 @@ import { createUser } from '../service/createUser';
 const slides = [
   {
     key: 'thanks',
-    title: 'THANK YOU FOR DOWNLOADING KARONA SAAF APP',
+    title: 'THANK YOU FOR DOWNLOADING',
     text: 'The next three screens will guide you through a tutorial of the app.',
     image: require('../../assets/thanks.jpg'),
     backgroundColor: 'orange',
