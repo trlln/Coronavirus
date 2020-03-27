@@ -8,36 +8,36 @@ import BackgroundGeolocation from '@mauron85/react-native-background-geolocation
 import uuid from 'react-native-uuid'
 
 const slides = [
-  {
-    key: 'thanks',
-    title: 'THANK YOU FOR DOWNLOADING',
-    text: 'The next three screens will guide you through a tutorial of the app.',
-    image: require('../../assets/thanks.jpg'),
-    backgroundColor: 'orange',
-  },
+  // {
+  //   key: 'thanks',
+  //   title: 'THANK YOU FOR DOWNLOADING',
+  //   text: 'The next three screens will guide you through a tutorial of the app.',
+  //   // image: require('../../assets/thanks.jpg'),
+  //   backgroundColor: 'orange',
+  // },
   {
     key: 'notifications',
-    title: '1. PERSONALIZE YOUR NOTIFICATIONS',
+    title: 'PERSONALIZE YOUR NOTIFICATIONS',
     text: '',
     image: require('../../assets/1.png'),
   },
   {
     key: 'videos',
-    title: '2. GOOD HYGIENE PRACTICES',
-    text: 'The videos above are from Goverment of India, WHO and other trusted sources. We will update these videos to reflect best practices to tackle COVID-19.',
+    title: 'GOOD HYGIENE PRACTICES',
+    text: '',
     image: require('../../assets/2.png'),
   },
   {
     key: 'resources',
-    title: '3. RESOURCES ',
-    text: 'Here you can easily find links to reliable government organizations that show the latest statistics and precautions to follow.',
+    title: 'RESOURCES',
+    text: '',
     image: require('../../assets/3.png'),
   }
 ];
 
 const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 0.8);
-const imageWidth = dimensions.width;
+const imageHeight = Math.round(dimensions.height * 0.8);
+const imageWidth = dimensions.width * 0.9;
 
 const styles = StyleSheet.create({
   slide: {

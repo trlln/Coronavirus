@@ -61,7 +61,7 @@ class TermsAndConditions extends Component {
 
 
 
-        }} style={this.state.accepted ? styles.button : styles.buttonDisabled}><Text style={styles.buttonLabel}>Accept</Text></TouchableOpacity>
+        }} style={styles.button}><Text style={styles.buttonLabel}>Accept</Text></TouchableOpacity>
       </View>
     );
   }

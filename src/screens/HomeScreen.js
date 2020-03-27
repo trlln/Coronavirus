@@ -237,6 +237,13 @@ class HomeScreen extends React.Component {
                   
                 )
 
+                // Saving current state
+          let defaultState = {};
+          defaultState.startTime = this.state.startTime;
+          defaultState.endTime = this.state.endTime;
+          defaultState.frequency = this.state.frequency;
+          AsyncStorage.setItem('defaultState', JSON.stringify(defaultState))
+
                     // // Network call to configure
                     const uid = JSON.parse(await AsyncStorage.getItem('uid'));
                     axios.post('https://us-central1-coronavirus-bf9cb.cloudfunctions.net/addUserDeatails', {
