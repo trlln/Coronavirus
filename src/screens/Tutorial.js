@@ -4,6 +4,8 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import TabNavigator from '../navigators/TabNavigator';
 import { addUserDetails } from '../service/addUserDetails';
 import { createUser } from '../service/createUser';
+import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
+import uuid from 'react-native-uuid'
 
 const slides = [
   {
@@ -189,10 +191,10 @@ class Tutorial extends React.Component {
     });
   }
 
-  sendUserDetails = async () => {
-    let uid = await createUser();
+  sendUserDetails = async (uid) => {
+    await createUser(uid);
     await AsyncStorage.setItem('uid', JSON.stringify(uid));
-    addUserDetails();
+    addUserDetails(uid);
   }
 
   _renderItem = ({ item }) => {
