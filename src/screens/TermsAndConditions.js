@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Dimensions, TouchableOpacity, AsyncStorage } from 'react-native';
 import { createUser } from '../service/createUser';
-// import AsyncStorage from '@react-native-community/async-storage'
 
 const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
   const paddingToBottom = 20;

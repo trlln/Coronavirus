@@ -1,11 +1,9 @@
 import React from 'react'
-import PushNotification from 'react-native-push-notification'
 import { ScrollView, Alert, StyleSheet, View, Text, Linking, Header, Picker, Platform } from 'react-native';
 import { Button } from 'react-native-elements';
 import { createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import YouTube,{YouTubeStandaloneAndroid, YouTubeStandaloneIOS}  from 'react-native-youtube';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from '../config/styles'
 
