@@ -29,7 +29,7 @@ class CartScreen extends React.Component {
             </Text>
             <Text style = {styles.textStyle1}>{'\n'}{'\n'}Helpline Numbers for India </Text>
             <Text style = {styles.hyperlinks}>1. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf') }>View Coronavirus Helpline Numbers </Text>
+              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf') }>View Helpline Numbers </Text>
             </Text>
             </ScrollView>
             <Text style = {styles.footerstyle}>Brought To You By
