@@ -38,7 +38,7 @@ class Hygiene extends React.Component {
 
 
 
-              {Platform.OS === 'android' && <Button title = " Protect yourself from COVID-19" color='green'buttonStyle={styles.button2}
+              {Platform.OS === 'android' && <Button title = " Protect yourself from diseases." color='green'buttonStyle={styles.button2}
               onPress = {()=>{
                 YouTubeStandaloneAndroid.playVideos({
                   apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -99,7 +99,7 @@ class Hygiene extends React.Component {
         <Text>{"\n"} </Text>
 
           {Platform.OS === 'android' &&
-          <Button title = " Information about COVID-19" color='green'buttonStyle={styles.button2}
+          <Button title = " Some Information" color='green'buttonStyle={styles.button2}
           onPress = {()=>{
             YouTubeStandaloneAndroid.playVideos({
               apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -113,7 +113,7 @@ class Hygiene extends React.Component {
         }/>}
 
         {Platform.OS === 'ios' &&
-        <Button title = " Information about COVID-19" color='green'buttonStyle={styles.button2}
+        <Button title = " Some Information" color='green'buttonStyle={styles.button2}
         onPress = {()=>{
           YouTubeStandaloneIOS.playVideo("mOV1aBVYKGA")
         }
