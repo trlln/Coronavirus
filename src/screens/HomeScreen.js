@@ -274,9 +274,9 @@ class HomeScreen extends React.Component {
 
 
 
-          <Text style={styles.textStyle1}>COVID-19 Helpline Number (India)</Text>
+          <Text style={styles.textStyle1}> Helpline Number (India)</Text>
           <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(+911123978046) }}>
-            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> COVID-19 Helpline </Text>
+            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Helpline </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(1075) }}>
             <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Toll Free Helpline </Text>
