@@ -15,7 +15,7 @@ class Hygiene extends React.Component {
         <ScrollView style={styles.margins}>
             <Text>{"\n"} </Text>
             {Platform.OS === 'android' &&
-            <Button title = " Correct way to wash your hands." color='green'  buttonStyle={styles.button2}
+            <Button title = " Correct way to wash your hands" color='green'  buttonStyle={styles.button2}
             onPress = {()=>{
               YouTubeStandaloneAndroid.playVideos({
                 apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -29,7 +29,7 @@ class Hygiene extends React.Component {
           }/>}
 
           {Platform.OS === 'ios' &&
-          <Button title = " Correct way to wash your hands." color='green'buttonStyle={styles.button2}
+          <Button title = " Correct way to wash your hands" color='green'buttonStyle={styles.button2}
           onPress = {()=>{
             YouTubeStandaloneIOS.playVideo("dK-O0Bv7HK4")
           }
@@ -38,7 +38,7 @@ class Hygiene extends React.Component {
 
 
 
-              {Platform.OS === 'android' && <Button title = " Protect yourself from diseases." color='green'buttonStyle={styles.button2}
+              {Platform.OS === 'android' && <Button title = " Protect yourself from diseases" color='green'buttonStyle={styles.button2}
               onPress = {()=>{
                 YouTubeStandaloneAndroid.playVideos({
                   apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -51,14 +51,14 @@ class Hygiene extends React.Component {
               }
             }/>}
             {Platform.OS === 'ios' &&
-            <Button title = " How to maintain Social Distancing" color='green'style={styles.button2}
+            <Button title = " Protect yourself from diseases" color='green'style={styles.button2}
             onPress = {()=>{
               YouTubeStandaloneIOS.playVideo("1APwq1df6Mw")
             }
           }/>}
               <Text>{"\n"} </Text>
 
-              {Platform.OS === 'android' && <Button title = " Some precautions to follow" color='green'buttonStyle={styles.button2}
+              {Platform.OS === 'android' && <Button title = " Precautions to follow" color='green'buttonStyle={styles.button2}
               onPress = {()=>{
                 YouTubeStandaloneAndroid.playVideos({
                   apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -71,57 +71,16 @@ class Hygiene extends React.Component {
               }
             }/>}
             {Platform.OS === 'ios' &&
-            <Button title = " Some precautions to follow" color='green'buttonStyle={styles.button2}
+            <Button title = " Precautions to follow" color='green'buttonStyle={styles.button2}
             onPress = {()=>{
               YouTubeStandaloneIOS.playVideo("Y9VgmhxtJFk")
             }
           }/>}
           <Text>{"\n"} </Text>
 
-          {Platform.OS === 'android' && <Button title = " Be a Responsible Citizen" color='green'buttonStyle={styles.button2}
-          onPress = {()=>{
-            YouTubeStandaloneAndroid.playVideos({
-              apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
-              videoIds: ["I47QOyX71kg"],
-              autoplay: true,
-              lightboxMode: true,
-              startIndex: 1,
-              startTime: 0,
-            })
-          }
-        }/>}
-        {Platform.OS === 'ios' &&
-        <Button title = " Be a Responsible Citizen" color='green'buttonStyle={styles.button2}
-        onPress = {()=>{
-          YouTubeStandaloneIOS.playVideo("I47QOyX71kg")
-        }
-        }/>}
-        <Text>{"\n"} </Text>
 
           {Platform.OS === 'android' &&
-          <Button title = " Some Information" color='green'buttonStyle={styles.button2}
-          onPress = {()=>{
-            YouTubeStandaloneAndroid.playVideos({
-              apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
-              videoIds:["mOV1aBVYKGA"],
-              autoplay: true,
-              lightboxMode: true,
-              startIndex: 1,
-              startTime: 0,
-            })
-          }
-        }/>}
-
-        {Platform.OS === 'ios' &&
-        <Button title = " Some Information" color='green'buttonStyle={styles.button2}
-        onPress = {()=>{
-          YouTubeStandaloneIOS.playVideo("mOV1aBVYKGA")
-        }
-      }/>}
-          <Text>{"\n"} </Text>
-
-          {Platform.OS === 'android' &&
-          <Button title = " Declare your symptoms" color='green'buttonStyle={styles.button2}
+          <Button title = " How to declare your symptoms" color='green'buttonStyle={styles.button2}
           onPress = {()=>{
             YouTubeStandaloneAndroid.playVideos({
               apiKey: "AIzaSyDVxQTyQ2MH6YIOrLxX3W9TOPsPMHJOTCU",
@@ -135,7 +94,7 @@ class Hygiene extends React.Component {
         }/>}
 
         {Platform.OS === 'ios' &&
-        <Button title = "6. Declare your symptoms" color='green'buttonStyle={styles.button2}
+        <Button title = " How to declare your symptoms" color='green'buttonStyle={styles.button2}
         onPress = {()=>{
           YouTubeStandaloneIOS.playVideo("TH95P9cYhW0")
         }
