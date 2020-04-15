@@ -12,25 +12,21 @@ class CartScreen extends React.Component {
             <ScrollView style = {styles.margins}>
             <Text style = {styles.textStyle1}>{'\n'}Trusted Resources </Text>
             <Text style = {styles.hyperlinks}>1. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://icmr.nic.in/node/39071') }>Indian Council of Medical Research </Text>
+              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://icmr.nic.in/node/39071') }>Indian Council of Medical Research (ICMR)</Text>
             </Text>
             <Text style = {styles.hyperlinks}>2. {'\t'}
               <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/') }>Ministry of Health and Family Welfare, India </Text>
             </Text>
             <Text style = {styles.hyperlinks}>3. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.who.int/health-topics/coronavirus') }>World Health Organization </Text>
+              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.who.int/health-topics/coronavirus') }>World Health Organization (WHO)</Text>
             </Text>
             <Text style = {styles.hyperlinks}>4. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.cdc.gov/') }>Centers for Disease Control and Prevention, USA </Text>
+              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.cdc.gov/') }>Centers for Disease Control (CDC), USA </Text>
             </Text>
             <Text style = {styles.textStyle1}>{'\n'}{'\n'}Latest Statistics </Text>
-            <Text style = {styles.hyperlinks}>1. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/') }>India State-Wise Statistics </Text>
-            </Text>
-            <Text style = {styles.textStyle1}>{'\n'}{'\n'}Helpline Numbers for India </Text>
-            <Text style = {styles.hyperlinks}>1. {'\t'}
-              <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf') }>View Helpline Numbers </Text>
-            </Text>
+            <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/') }>India State-Wise Statistics </Text>
+            <Text style = {styles.textStyle1}>{'\n'}{'\n'}Helpline Numbers</Text>
+            <Text style = {{textDecorationLine: 'underline'}} onPress={ ()=> Linking.openURL('https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf') }>View Helpline Numbers for India </Text>
             </ScrollView>
             <Text style = {styles.footerstyle}>Brought To You By
               <Text style = {{textDecorationLine: 'underline', color: 'orange', fontSize: 20}} onPress={ ()=> Linking.openURL('https://www.mychowkidar.co.in/') }>{'\n'}Team MyChowkidar </Text>
