@@ -272,15 +272,6 @@ class HomeScreen extends React.Component {
           }
           } buttonStyle={styles.button2} title="Save" />
 
-
-
-          <Text style={styles.textStyle1}> Helpline Number (India)</Text>
-          <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(+911123978046) }}>
-            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Helpline </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => { this.dialCall(1075) }}>
-            <Text style={{ color: 'brown', fontSize: 16, fontWeight: 'bold' }}> Toll Free Helpline </Text>
-          </TouchableOpacity>
         </ScrollView>
         <Text style={styles.footerstyle}>Brought To You By
         <Text style={{ textDecorationLine: 'underline', color: 'orange', fontSize: 20 }} onPress={() => Linking.openURL('https://www.mychowkidar.co.in/')}>{'\n'}Team MyChowkidar </Text>

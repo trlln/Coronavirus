@@ -1,4 +1,4 @@
-package com.mychowkidar.coronavirus;
+package com.mychowkidar.htips;
 
 import com.facebook.react.ReactActivity;
 
