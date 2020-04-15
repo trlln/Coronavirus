@@ -104,8 +104,6 @@ class HomeScreen extends React.Component {
             selectedValue={this.state.frequency}
             onValueChange={(itemValue, itemPosition) =>
               this.setState({ frequency: itemValue })} mode='dropdown'>
-            <Picker.Item label="Every 30 minutes" value="0.5" />
-            <Picker.Item label="Every hour" value="1" />
             <Picker.Item label="Every 2 hours" value="2" />
             <Picker.Item label="Every 3 hours" value="3" />
           </Picker>
